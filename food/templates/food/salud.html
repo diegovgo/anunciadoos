@@ -1,0 +1,9 @@
+{% extends "food/base.html" %} {% load static %} {% block heading %}
+<h2>Escoge una institucion:</h2>{% endblock %} {% block body %}
+<h1>
+    {% for institucion in instituciones %}
+    <h1>
+        <img src="/{{ institucion.logo }}" height="100px" width="auto">
+        <a href="{% url 'salud_page' institucion.url %}">{{ institucion }} </a> {% endfor %}
+    </h1>
+    {% endblock %}

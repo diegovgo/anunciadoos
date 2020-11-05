@@ -1,0 +1,9 @@
+{% extends "food/base.html" %} {% load static %} {% block heading %}
+<h2>Escoge una restaurante:</h2>{% endblock %} {% block body %}
+<h1>
+    {% for restaurant in restaurants %}
+    <h1>
+        <img src="/{{ restaurant.logo }}" height="100px" width="auto">
+        <a href="{% url 'restaurant_page' restaurant.id %}">{{ restaurant }} </a> {% endfor %}
+    </h1>
+    {% endblock %}

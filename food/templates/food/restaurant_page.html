@@ -1,0 +1,25 @@
+{% extends "food/base.html" %} {% load static %} {% block heading %} Welcome to Central Food {% endblock %} {% block body %}
+<h1>
+    {{ restaurant }}</h1>
+<div class="container">
+    <h1>Los mejores platos!</h1>
+    {% for dish in dishes %}
+    <div class="card" style="width: 14rem; margin:25px;display: inline-flex;">
+        <img class="card-img-top" src="/{{ dish.img }}">
+
+        <div class="card-body">
+
+            <h5 class="card-title">
+                <h4>{{ dish.name }}</h4>
+            </h5>
+            <h5 class="card-title">${{ dish.price }}</h5>
+            <p class="card-text">{{ dish.description }}</p>
+            <a class="btn btn-primary">Cómpralo ahora</a>
+        </div>
+    </div>
+
+    {% endfor %}
+
+</div>
+<div style="background-image: url('static/imgs/alitas.jpg');"></div>
+{% endblock %}
