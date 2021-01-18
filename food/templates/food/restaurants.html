@@ -3,7 +3,8 @@
 <h1>
     {% for restaurant in restaurants %}
     <h1>
-        <img src="/{{ restaurant.logo }}" height="100px" width="auto">
+        <embed src='{{ restaurant.logo.url }}' type="image/jpg" width="auto" height="100px" style="border-radius: 15px; margin:15px" />
+
         <a href="{% url 'restaurant_page' restaurant.id %}">{{ restaurant }} </a> {% endfor %}
     </h1>
     {% endblock %}
