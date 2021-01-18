@@ -10,7 +10,7 @@
 
 </div>
 
-<div style="position: sticky; top:0; bottom:auto; background-color: white; z-index: 4; font-family: 'Roboto', sans-serif;">
+<div style="position: sticky; top:0; bottom:auto; background-color: white; z-index: 4; font-family: 'Sofia'">
     <h1 style="text-align: center;">Menú del Día</h1>
     <nav class="navbar">
         <form class="form-inline">
@@ -19,7 +19,7 @@
         </form>
     </nav>
 </div>
-<div style="background-color: black; color: white; font-family: 'Roboto', sans-serif; ">
+<div style="background-color: black; color: white; font-family: 'Sofia' ">
 
     {% for typeof in typeofs %}
     <h3><a name="{{ typeof.id }}"> {{ typeof.name }}</a></h3>{% for dish in dishes %} {% if typeof.id == dish.typeof.id %}
