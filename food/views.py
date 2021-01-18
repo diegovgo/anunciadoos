@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import District, Restaurant, Dishes, Category, Saludinst
+from .models import District, Restaurant, Dishes, Category, Saludinst, TypeOf
 from django.http import HttpResponseRedirect, HttpResponse
 #from .forms import NoteForm, CustomUserForm, CreatePostForm, FileForm, MyUserForm
 #from rest_framework import viewsets
@@ -27,16 +27,17 @@ def restaurant(request):
 
 def restPage(request, id):
     restaurant = Restaurant.objects.get(id=id)
-    dishes = Dishes.objects.filter(restaurant=restaurant)
-    dish_img= []
-    for dish in dishes :
-        dish_img.append(dish.img)
-    
-    print(dish_img)
+    typeofs = restaurant.typeof.all()
+    ##dishes = Dishes.objects.filter(typeof)
+    dishes = []
+    for typeof in typeofs:
+        dishes.extend(typeof.dishes.all())
+    print(dishes)
     data = {
         'restaurant': restaurant,
         'dishes': dishes,
-        'dish_img': dish_img,
+        'typeofs': typeofs,
+        
     }
     print(dishes)
     return render(request, 'food/restaurant_page.html', data)

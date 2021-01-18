@@ -9,9 +9,45 @@
     </div>
 
 </div>
-<div class="container" style="background-color: black; color: white; font-family: 'Sofia', sans-serif; ">
+
+<div style="position: sticky; top:0; bottom:auto; background-color: white; z-index: 4; font-family: 'Roboto', sans-serif;">
     <h1 style="text-align: center;">Menú del Día</h1>
-    {% for dish in dishes %}
+    <nav class="navbar">
+        <form class="form-inline">
+            {% for typeof in typeofs %}
+            <button class="btn btn-outline-success" type="button" style="margin-left:10px"><a href="#{{ typeof.id }}"> {{typeof.name }} </a></button> {% endfor %}
+        </form>
+    </nav>
+</div>
+<div style="background-color: black; color: white; font-family: 'Roboto', sans-serif; ">
+
+    {% for typeof in typeofs %}
+    <h3><a name="{{ typeof.id }}"> {{ typeof.name }}</a></h3>{% for dish in dishes %} {% if typeof.id == dish.typeof.id %}
+
+    <div class="card" style="width: 100%; margin:5px;display: inline-flex; background-color:black; color:#F5A623; border-color:white ">
+        <div class="row">
+
+            <div class="col-sm-3">
+                <div class="container" style="text-align: center;">
+                    <embed src='{{ dish.img.url }}' type="image/jpg" width="80%" height="auto" style="border-radius: 15px; margin:15px" />
+                </div>
+            </div>
+
+            <div class="col-sm-8">
+                <div class="card-body ">
+
+                    <h5 class="card-title ">
+                        <h4>{{ dish.name }}</h4>
+                    </h5>
+                    <h5 class="card-title ">S/ {{ dish.price }}</h5>
+                    <p class="card-text " style="font-size:1em">{{ dish.description }}</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %} {% endfor %} {% endfor %}
+    <!--{% for dish in dishes %}
 
     <div class="card" style="width: 100%; margin:5px;display: inline-flex; background-color:black; color:#F5A623; border-color:white ">
         <div class="row">
@@ -36,8 +72,8 @@
         </div>
     </div>
 
-    {% endfor %}
-
+    {% endfor %}-->
 </div>
+
 <div style="background-image: url( 'static/imgs/alitas.jpg'); "></div>
 {% endblock %}
