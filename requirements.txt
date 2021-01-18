@@ -10,9 +10,6 @@ postgres==3.0.0
 psycopg2==2.7.4
 psycopg2-binary==2.8.5
 python-decouple==3.3
-pytz==2019.2
-query-string==2019.4.13
-request==2019.4.13
 requests==2.22.0
 sqlparse==0.3.0
 whitenoise==5.0.1
