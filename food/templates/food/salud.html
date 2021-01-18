@@ -3,7 +3,7 @@
 <h1>
     {% for institucion in instituciones %}
     <h1>
-        <img src="/{{ institucion.logo }}" height="100px" width="auto">
+        <img src='https://anunciadoos.s3.amazonaws.com/{{ institucion.logo }}?AWSAccessKeyId=AKIA3T2S6CW2VSV43XP4&Signature=jVsOMTGCwV6VqUQbP2fNmQ0ghmI%3D&Expires=1604690075' height="100px" width="auto">
         <a href="{% url 'salud_page' institucion.url %}">{{ institucion }} </a> {% endfor %}
     </h1>
     {% endblock %}

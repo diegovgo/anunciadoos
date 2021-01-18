@@ -2,22 +2,24 @@
 <h1>Escoge una categoría {% endblock %} {% block body %}
 </h1>
 
-<div class="card">
-    <div class="card-body" style="background-image: url('static/background_restaurants.png');opacity: 100%;">
-        <h5 class="card-title text-white">Comida</h5>
-        <h5 class="card-title text-white">Encuentra los mejores restaurantes de Lima</h5>
-        <p class="card-text text-white">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="{% url 'comida' %}" class="btn btn-primary">Visita ahora</a>
+<div class="card">{% with 'static/background_restaurants.png' as image_static %}
+
+    <div class="card-body" style='background-image: url(" {% static image_static  %} ");opacity: 100%; '> {% endwith %}
+        <h5 class="card-title text-white ">Comida</h5>
+        <h5 class="card-title text-white ">Encuentra los mejores restaurantes de Lima</h5>
+        <p class="card-text text-white ">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="{% url 'comida' %} " class="btn btn-primary ">Visita ahora</a>
     </div>
 </div>
 
 <br>
-<div class="card">
-    <div class="card-body" style="background-image: url('static/background_salud.png');opacity: 100%;">
-        <h5 class="card-title text-white">Salud</h5>
-        <h5 class="card-title text-white">Encuentra los mejores centros médicos de Lima</h5>
-        <p class="card-text text-white">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="{% url 'salud' %}" class="btn btn-primary">Visita ahora</a>
+<div class="card ">
+    {% with 'static/background_salud.png' as image_static %}
+    <div class="card-body " style="background-image: url(' {% static image_static  %} ');opacity: 100%; ">{% endwith %}
+        <h5 class=" card-title text-white ">Salud</h5>
+        <h5 class="card-title text-white ">Encuentra los mejores centros médicos de Lima</h5>
+        <p class="card-text text-white ">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="{% url 'salud' %} " class="btn btn-primary ">Visita ahora</a>
     </div>
 </div>
 {% endblock %}

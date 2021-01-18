@@ -12,4 +12,4 @@ urlpatterns = [
     path("salud", views.salud, name="salud"),
     path("salud/instituciones/<url>", views.saludPage, name="salud_page"),
     
-]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

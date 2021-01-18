@@ -1,25 +1,43 @@
-{% extends "food/base.html" %} {% load static %} {% block heading %} Welcome to Central Food {% endblock %} {% block body %}
-<h1>
-    {{ restaurant }}</h1>
-<div class="container">
-    <h1>Los mejores platos!</h1>
+{% extends "food/base.html" %} {% load staticfiles %} {% block heading %} {% endblock %} {% block body %}
+
+<div class="row">
+    <div class="col" style="text-align: center; font-family: 'Sofia'">
+        <h1>
+            {{ restaurant }}</h1>
+        <embed src='{{ restaurant.logo.url }}' type="image/jpg" width="100em" height="auto" style="border-radius: 15px; margin:15px" />
+
+    </div>
+
+</div>
+<div class="container" style="background-color: black; color: white; font-family: 'Sofia', sans-serif; ">
+    <h1 style="text-align: center;">Menú del Día</h1>
     {% for dish in dishes %}
-    <div class="card" style="width: 14rem; margin:25px;display: inline-flex;">
-        <img class="card-img-top" src="/{{ dish.img }}">
 
-        <div class="card-body">
+    <div class="card" style="width: 100%; margin:5px;display: inline-flex; background-color:black; color:#F5A623; border-color:white ">
+        <div class="row">
 
-            <h5 class="card-title">
-                <h4>{{ dish.name }}</h4>
-            </h5>
-            <h5 class="card-title">${{ dish.price }}</h5>
-            <p class="card-text">{{ dish.description }}</p>
-            <a class="btn btn-primary">Cómpralo ahora</a>
+            <div class="col-sm-3">
+                <div class="container" style="text-align: center;">
+                    <embed src='{{ dish.img.url }}' type="image/jpg" width="80%" height="auto" style="border-radius: 15px; margin:15px" />
+                </div>
+            </div>
+
+            <div class="col-sm-8">
+                <div class="card-body ">
+
+                    <h5 class="card-title ">
+                        <h4>{{ dish.name }}</h4>
+                    </h5>
+                    <h5 class="card-title ">S/ {{ dish.price }}</h5>
+                    <p class="card-text " style="font-size:1em">{{ dish.description }}</p>
+
+                </div>
+            </div>
         </div>
     </div>
 
     {% endfor %}
 
 </div>
-<div style="background-image: url('static/imgs/alitas.jpg');"></div>
+<div style="background-image: url( 'static/imgs/alitas.jpg'); "></div>
 {% endblock %}

@@ -28,9 +28,15 @@ def restaurant(request):
 def restPage(request, id):
     restaurant = Restaurant.objects.get(id=id)
     dishes = Dishes.objects.filter(restaurant=restaurant)
+    dish_img= []
+    for dish in dishes :
+        dish_img.append(dish.img)
+    
+    print(dish_img)
     data = {
         'restaurant': restaurant,
         'dishes': dishes,
+        'dish_img': dish_img,
     }
     print(dishes)
     return render(request, 'food/restaurant_page.html', data)

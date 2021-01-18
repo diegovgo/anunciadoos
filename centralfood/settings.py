@@ -88,11 +88,13 @@ DATABASES = {
 }
 
 '''
+import dj_database_url
+from decouple import config
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+    'default': dj_database_url.config(
+        default=config('DATABASE_URL')
+    )
 }
 '''
 
@@ -131,7 +133,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
-
+'''
 STATIC_URL = '/static/'
 
 MEDIA_URL = '/media/'
@@ -139,5 +141,25 @@ MEDIA_URL = '/media/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
+'''
+#IF PROD CONNECT TO AWS
 
-#MEDIA_ROOT = os.path.join(BASE_DIR,'static')
+#S3 BUCKETS CONFIG
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR,'static')
+
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+MEDIA_URL = '/media/'
+
+AWS_ACCESS_KEY_ID = 'AKIA3T2S6CW2VSV43XP4'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'anunciadoos'
+
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL = None
+
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+
+
