@@ -37,7 +37,7 @@ class Saludinst(models.Model):
 class Dishes(models.Model):
     name = models.CharField(max_length=120)
     description = models.TextField()
-    img = models.ImageField(upload_to="static/imgs", null=True)
+    img = models.ImageField(upload_to="static/imgs", null=True, blank=True, default="static/imgs/food_default.jpg")
     price = models.DecimalField(max_digits=10, decimal_places=2)
     restaurant = models.ForeignKey(Restaurant, null=True, on_delete=models.CASCADE, related_name="dishes")
 
