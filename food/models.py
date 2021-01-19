@@ -19,6 +19,7 @@ class Restaurant(models.Model):
     category = models.ManyToManyField(Category, related_name="restaurant")
     district = models.ManyToManyField(District, related_name="restaurant")
     logo = models.ImageField(upload_to="static/logos", null=True)
+    url = models.CharField(max_length=64, blank=True)
 
     def __str__(self):
         return self.name
@@ -38,6 +39,7 @@ class Saludinst(models.Model):
 class TypeOf(models.Model):
     name = models.CharField(max_length=64)
     restaurante = models.ForeignKey(Restaurant, null=True, on_delete=models.CASCADE, related_name="typeof")
+    title = models.CharField(max_length=64,blank=True)
 
     def __str__(self):
         return self.name
@@ -47,7 +49,7 @@ class Dishes(models.Model):
     img = models.ImageField(upload_to="static/imgs", null=True, blank=True, default="static/imgs/food_default.jpg")
     price = models.DecimalField(max_digits=10, decimal_places=2)
     typeof = models.ForeignKey(TypeOf, null=True, on_delete=models.CASCADE, related_name="dishes")
-
+   
     def __str__(self):
         return self.name
 

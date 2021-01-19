@@ -25,8 +25,8 @@ def restaurant(request):
     return render(request, 'food/restaurants.html', data)
 
 
-def restPage(request, id):
-    restaurant = Restaurant.objects.get(id=id)
+def restPage(request, url):
+    restaurant = Restaurant.objects.get(url=url)
     typeofs = restaurant.typeof.all()
     ##dishes = Dishes.objects.filter(typeof)
     dishes = []

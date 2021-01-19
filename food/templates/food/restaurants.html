@@ -6,7 +6,7 @@
             <embed src='{{ restaurant.logo.url }}' type="image/jpg" width="auto" height="100px" style="border-radius: 15px; margin:15px" />
         </div>
         <div class="col">
-            <a href="{% url 'restaurant_page' restaurant.id %}">
+            <a href="{% url 'restaurant_page' restaurant.url %}">
                 <h1>{{ restaurant }}</h1>
             </a>
         </div>
