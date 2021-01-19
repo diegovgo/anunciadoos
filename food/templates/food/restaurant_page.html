@@ -1,35 +1,42 @@
-{% extends "food/base.html" %} {% load staticfiles %} {% block heading %} {% endblock %} {% block body %}
+{% extends "food/base.html" %} {% load staticfiles %} {% block head %}
+<style>
+    .contentf {
+        margin-top: 100px;
+    }
+</style>{% endblock %} {% block body %}
 
 <div class="row">
     <div class="col" style="text-align: center; font-family: 'Sofia'">
         <h1>
             {{ restaurant }}</h1>
+
         <embed src='{{ restaurant.logo.url }}' type="image/jpg" width="100em" height="auto" style="border-radius: 15px; margin:15px" />
 
     </div>
 
 </div>
+<div id="navbar" style="position: sticky; top:0; bottom:auto; background-color:white; z-index: 4; font-family: 'Sofia'">
 
-<div style="position: sticky; top:0; bottom:auto; background-color: white; z-index: 4; font-family: 'Sofia'">
     <h1 style="text-align: center;">Menú del Día</h1>
     <nav class="navbar">
         <form class="form-inline">
             {% for typeof in typeofs %}
-            <button class="btn btn-outline-success" type="button" style="margin-left:10px"><a href="#{{ typeof.id }}"> {{typeof.name }} </a></button> {% endfor %}
+            <button name="navbutton" class="btn btn-outline-secondary" type="button" style="margin-left:10px; "><a href="#{{ typeof.id }}" style=" text-decoration: none;color:lightgray"> {{typeof.name }} </a></button> {% endfor %}
         </form>
     </nav>
 </div>
-<div style="background-color: black; color: white; font-family: 'Sofia' ">
+
+<div id="content" style="; color: black; font-family: 'Sofia ' ">
 
     {% for typeof in typeofs %}
-    <h3><a name="{{ typeof.id }}"> {{ typeof.name }}</a></h3>{% for dish in dishes %} {% if typeof.id == dish.typeof.id %}
+    <h3 style="position:sticky; top:auto"><a name="{{ typeof.id }}"> {{ typeof.name }}</a></h3>{% for dish in dishes %} {% if typeof.id == dish.typeof.id %}
 
-    <div class="card" style="width: 100%; margin:5px;display: inline-flex; background-color:black; color:#F5A623; border-color:white ">
+    <div class="card" style="width: 100%; margin:5px;display: inline-flex; background-color:white; color:#F5A623; border-color:lightgray;box-shadow: 10px 5px 5px lightgray;; ">
         <div class="row">
 
             <div class="col-sm-3">
                 <div class="container" style="text-align: center;">
-                    <embed src='{{ dish.img.url }}' type="image/jpg" width="80%" height="auto" style="border-radius: 15px; margin:15px" />
+                    <embed src='{{ dish.img.url }} ' type="image/jpg" width="80%" height="auto" style="border-radius: 15px; margin:15px" />
                 </div>
             </div>
 
@@ -54,7 +61,7 @@
 
             <div class="col-sm-3">
                 <div class="container" style="text-align: center;">
-                    <embed src='{{ dish.img.url }}' type="image/jpg" width="80%" height="auto" style="border-radius: 15px; margin:15px" />
+                    <embed src='{{ dish.img.url }} ' type="image/jpg" width="80%" height="auto" style="border-radius: 15px; margin:15px" />
                 </div>
             </div>
 
@@ -75,5 +82,14 @@
     {% endfor %}-->
 </div>
 
-<div style="background-image: url( 'static/imgs/alitas.jpg'); "></div>
+<div style="background-image: url( 'static/imgs/alitas.jpg '); "></div>
+<!--
+<script>
+    function myFunction() {
+
+        $('#content ').removeClass()
+        $('#content ').addClass('contentf ')
+    }
+</script>
+-->
 {% endblock %}

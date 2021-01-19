@@ -1,10 +1,15 @@
 {% extends "food/base.html" %} {% load static %} {% block heading %}
-<h2>Escoge una restaurante:</h2>{% endblock %} {% block body %}
-<h1>
-    {% for restaurant in restaurants %}
-    <h1>
-        <embed src='{{ restaurant.logo.url }}' type="image/jpg" width="auto" height="100px" style="border-radius: 15px; margin:15px" />
-
-        <a href="{% url 'restaurant_page' restaurant.id %}">{{ restaurant }} </a> {% endfor %}
-    </h1>
-    {% endblock %}
+<h2>Escoge una restaurante:</h2>{% endblock %} {% block body %} {% for restaurant in restaurants %}
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <embed src='{{ restaurant.logo.url }}' type="image/jpg" width="auto" height="100px" style="border-radius: 15px; margin:15px" />
+        </div>
+        <div class="col">
+            <a href="{% url 'restaurant_page' restaurant.id %}">
+                <h1>{{ restaurant }}</h1>
+            </a>
+        </div>
+    </div>
+</div>
+{% endfor %} {% endblock %}
