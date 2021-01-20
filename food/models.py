@@ -42,7 +42,7 @@ class TypeOf(models.Model):
     title = models.CharField(max_length=64,blank=True)
 
     def __str__(self):
-        return self.name
+        return self.title
 class Dishes(models.Model):
     name = models.CharField(max_length=120)
     description = models.TextField()
