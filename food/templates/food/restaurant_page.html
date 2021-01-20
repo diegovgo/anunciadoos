@@ -1,9 +1,15 @@
 {% extends "food/base.html" %} {% load staticfiles %} {% block head %}
 <style>
     .contentf {
-        margin-top: 100px;
+        padding-top: 110px;
     }
-</style>{% endblock %} {% block body %}
+
+    .section1 {
+        padding-top:110px
+    }
+</style>{% endblock %} 
+
+{% block body %}
 
 <div class="row">
     <div class="col" style="text-align: center; font-family: 'Sofia'">
@@ -26,10 +32,17 @@
     </nav>
 </div>
 
-<div id="content" style="; color: black; font-family: 'Sofia ' ">
+<div id="content" style="color: black; font-family: 'Sofia ' ">
 
     {% for typeof in typeofs %}
-    <h3 style="position:sticky; top:auto"><a name="{{ typeof.id }}"> {{ typeof.name }}</a></h3>{% for dish in dishes %} {% if typeof.id == dish.typeof.id %}
+    <a name="{{ typeof.id }}"></a>
+    <div name="section" class="section1"></div>
+    
+    <!--style="background-image:url('https://cnnespanol.cnn.com/wp-content/uploads/2019/01/Galerias-nuevos-restaurantes-2019-CNN-1.jpg?quality=100&amp;strip=info&amp;w=900&amp;h=506&amp;crop=1');">-->
+    <h3 style="position:sticky; top:auto"> {{ typeof.name }}</a></h3><hr>
+
+    {% for dish in dishes %} 
+        {% if typeof.id == dish.typeof.id %}
 
     <div class="card" style="width: 100%; margin:5px;display: inline-flex; background-color:white; color:#F5A623; border-color:lightgray;box-shadow: 10px 5px 5px lightgray;; ">
         <div class="row">
@@ -53,6 +66,7 @@
             </div>
         </div>
     </div>
+
     {% endif %} {% endfor %} {% endfor %}
     <!--{% for dish in dishes %}
 
@@ -86,10 +100,10 @@
 <!--
 <script>
     function myFunction() {
-
-        $('#content ').removeClass()
-        $('#content ').addClass('contentf ')
+        $("[name='section']").removeClass()
+        $("[name='section']").addClass('contentf')
     }
+   
 </script>
 -->
 {% endblock %}
