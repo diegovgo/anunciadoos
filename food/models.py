@@ -20,6 +20,7 @@ class Restaurant(models.Model):
     district = models.ManyToManyField(District, related_name="restaurant")
     logo = models.ImageField(upload_to="static/logos", null=True)
     url = models.CharField(max_length=64, blank=True)
+    phone = models.IntegerField(null=True, blank=True)
 
     def __str__(self):
         return self.name

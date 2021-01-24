@@ -14,17 +14,16 @@
     
     <!--<link rel="shortcut icon" href="your_image_path_and_name.ico" />-->
 
-    <title>Encuénaasdadsdtralo</title>{% block head %}{% endblock %}
+    <title>Encuéntrame</title>{% block head %}{% endblock %}
 </head>
 
 <body>
+    <div style="text-align:center; background-color:#FFD933 ;">
+        <img src="{% static '/static/logo.png' %}" alt="anunciados" width="90px" height="auto">
+    </div>
+    
     <div class="container">
         <div class="container">
-            <div style="text-align:center">
-
-                <img src="{% static '/static/logo.png' %}" alt="anunciados" width="100px" height="auto">
-            </div>
-
         </div>
         {% block heading %} {% endblock %} {% block body %} {% endblock %}
     </div>

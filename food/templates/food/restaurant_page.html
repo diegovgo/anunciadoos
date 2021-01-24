@@ -6,6 +6,17 @@
 <meta name="description" content="{{ elements }}"/>
 
 <style>
+    .contact {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    }
+    .separation {
+        background-color: #F1A300;
+        height: 5px;
+        width: auto;
+        margin-bottom: 15px;
+    }
  .before-input , .input-group {
     display: flex; 
     align-items: flex-end; 
@@ -87,8 +98,8 @@ input[type="number"] {
    {% endblock %} 
 
 {% block body %}
-{{ description }}
-
+<br>
+<div class="separation"></div>
 <div class="row">
     <div class="col" style="text-align: center; font-family: 'Sofia'">
         <h1>
@@ -99,13 +110,14 @@ input[type="number"] {
     </div>
 
 </div>
+<div class="separation"></div>
 <div id="navbar" style="position: sticky; top:0; bottom:auto; background-color:white; z-index: 4; font-family: 'Sofia'">
 
     <h1 style="text-align: center;">Menú del Día</h1>
     <nav class="navbar">
         <form class="form-inline">
             {% for typeof in typeofs %}
-            <button name="navbutton" class="btn btn-outline-secondary" type="button" style="margin-left:10px; "><a href="#{{ typeof.id }}" style=" text-decoration: none;color:lightgray"> {{typeof.name }} </a></button> {% endfor %}
+            <button name="navbutton" class="btn btn-outline-secondary" type="button" style="margin-left:10px; "><a href="#{{ typeof.id }}" style=" text-decoration: none;color:gray"> {{typeof.name }} </a></button> {% endfor %}
         </form>
     </nav>
 </div>
@@ -122,7 +134,7 @@ input[type="number"] {
     {% for dish in dishes %} 
         {% if typeof.id == dish.typeof.id %}
 
-    <div class="card" style="width: 100%; margin:5px;display: inline-flex; background-color:white; color:#F5A623; border-color:lightgray;box-shadow: 10px 5px 5px lightgray;; ">
+    <div class="card" style="width: 100%; margin:5px;display: inline-flex; background-color:white; color:#A64900; border-color:lightgray;box-shadow: 10px 5px 5px lightgray;opacity:90%; ">
         <div class="row">
 
             <div class="col-sm-3">
@@ -194,7 +206,10 @@ input[type="number"] {
     {% endfor %}-->
 </div>
 
-<div style="background-image: url( 'static/imgs/alitas.jpg '); "></div>
+<div class="contact">
+    <a href="https://api.whatsapp.com/send?phone=+51{{ restaurant.phone }}&text=Vengo%20de%20Encuentrame.fun!%20Deseo%20pedir"> <img src="{% static 'static/wsp-logo.png' %}" alt="whatsapp" width=70px height="auto"></a>
+
+</div>
 
 
 
