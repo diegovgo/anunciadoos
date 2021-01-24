@@ -27,7 +27,7 @@ def restaurant(request):
 
 def restPage(request, url):
     restaurant = Restaurant.objects.get(url=url)
-    typeofs = restaurant.typeof.all()
+    typeofs = restaurant.typeof.order_by('order')
     ##dishes = Dishes.objects.filter(typeof)
     dishes = []
     for typeof in typeofs:

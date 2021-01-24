@@ -1,4 +1,10 @@
-{% extends "food/base.html" %} {% load static %} {% block heading %}
+{% extends "food/base.html" %} {% load static %}
+{% block head %}
+<link rel="shortcut icon" href="{% static 'static/logo.png' %}" type="image/png">
+{% endblock %}
+
+
+{% block heading %}
 <h1>Escoge una categoría {% endblock %} {% block body %}
 </h1>
 

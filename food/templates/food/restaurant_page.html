@@ -1,5 +1,80 @@
-{% extends "food/base.html" %} {% load staticfiles %} {% block head %}
+{% extends "food/base.html" %} {% load staticfiles %} 
+{% block head %}
+
+<link rel="shortcut icon" href="{{ restaurant.logo.url }} " type="image/png">
+<meta name="title" content="{{ restaurant.name }}"/>
+<meta name="description" content="Los meta tags de HTML codifican información para ser interpretada por el navegador y los buscadores. ¿Sabes cuáles son imprescindibles?"/>
+
 <style>
+ .before-input , .input-group {
+    display: flex; 
+    align-items: flex-end; 
+    justify-content: center;
+    opacity:70%;
+
+ }
+
+    input,
+textarea {
+  border: 1px solid #eeeeee;
+  box-sizing: border-box;
+  margin: 0;
+  outline: none;
+  padding: 10px;
+}
+
+input[type="button"] {
+  -webkit-appearance: button;
+  cursor: pointer;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.input-group {
+  clear: both;
+  margin: 15px 0;
+  position: relative;
+}
+
+.input-group input[type='button'] {
+  background-color: #eeeeee;
+  min-width: 38px;
+  width: auto;
+  transition: all 300ms ease;
+}
+
+.input-group .button-minus,
+.input-group .button-plus {
+  font-weight: bold;
+  height: 38px;
+  padding: 0;
+  width: 38px;
+  position: relative;
+}
+
+.input-group .quantity-field {
+  position: relative;
+  height: 38px;
+  left: -6px;
+  text-align: center;
+  width: 62px;
+  display: inline-block;
+  font-size: 13px;
+  margin: 0 0 5px;
+  resize: vertical;
+}
+
+.button-plus {
+  left: -13px;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+  -webkit-appearance: none;
+}
     .contentf {
         padding-top: 110px;
     }
@@ -7,7 +82,9 @@
     .section1 {
         padding-top:110px
     }
-</style>{% endblock %} 
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+   {% endblock %} 
 
 {% block body %}
 
@@ -48,8 +125,27 @@
         <div class="row">
 
             <div class="col-sm-3">
-                <div class="container" style="text-align: center;">
-                    <embed src='{{ dish.img.url }} ' type="image/jpg" width="80%" height="auto" style="border-radius: 15px; margin:15px" />
+                <div style="display: flex; align-items: center; justify-content: center; padding:5px">
+                <div  style="background-image: url('{{ dish.img.url }}'); background-position: center center; background-repeat: no-repeat; background-size: cover; width: 150px; height: 150px; border-radius: 25%;" >
+                    <!--<div class="input-group" style="display: flex; align-items: flex-end; justify-content: center;opacity:70%; display:None">
+                        
+                        <input type="button" value="-" class="button-minus" data-field="quantity">
+                        <input type="number" name="quantity" class="quantity-field" value="0" step="1"  style="text-align: center;">
+                        <input type="button" value="+" class="buttton-plus" data-field="quantity" >
+                    </div>  
+                    <button name="choosebutton" class="before-input" type="button" id="{{ dish.id }}" class="btn btn-primary" style="margin:5px; ">Escoger</button>
+
+                       <div class="input-group">
+                        <input type="button" value="-" class="button-minus" data-field="quantity">
+                        <input type="number" step="1" max="" value="1" name="quantity" class="quantity-field">
+                        <input type="button" value="+" class="button-plus" data-field="quantity">
+                      </div>
+                      
+                    -->                
+                    
+                    <!--<embed src='{{ dish.img.url }} ' type="image/jpg" width="80%" height="auto" style="border-radius: 15px; margin:15px" />-->
+
+                </div>
                 </div>
             </div>
 
@@ -61,6 +157,7 @@
                     </h5>
                     <h5 class="card-title ">S/ {{ dish.price }}</h5>
                     <p class="card-text " style="font-size:1em">{{ dish.description }}</p>
+                   
 
                 </div>
             </div>
@@ -97,13 +194,97 @@
 </div>
 
 <div style="background-image: url( 'static/imgs/alitas.jpg '); "></div>
-<!--
+
+
+
 <script>
-    function myFunction() {
-        $("[name='section']").removeClass()
-        $("[name='section']").addClass('contentf')
-    }
-   
+/*    function myFunction() {
+    $("[name='section']").removeClass()
+    $("[name='section']").addClass('contentf')
+}
+*/
+
+
+/*
+  $(".before-input").click(function () {
+    list.push($(this).attr('id'));
+    var id = $(this).attr('id');
+    current_id = id;
+    $("input[name="+ id +"]").val(1)
+        
+
+
+    +36
+    $(
+        ç0this).hide();
+m    $(this).parent().find('.input-group').show();
+
+0 }) 
+/*
+$("button[name ='plus "+ current_id +"']").click( function () {
+        let num= +$("input[name="+ id +"]").val() + 1;
+        console.log(num);
+        $("input[name="+ current_id +"]").val(num)
+    });
+
+    $("button[name ='minus "+ current_id +"']").click( function () {
+        if ( $("input[name="+ current_id +"]").val() <= 1) {
+            $("input[name="+ current_id +"]").val(0)
+            $(this).hide();
+            $("input[name="+ current_id +"]").hide();
+            $("button[name ='plus "+ current_id +"']").hide()
+            $('#'+ current_id).show();
+            console.log("no más reduccion");
+
+        }
+        else {
+            let kayra= +$("input[name="+ current_id +"]").val() - 1;
+            console.log(kayra);
+            $("input[name="+ current_id +"]").val(kayra)
+        }
+        
+    })
+*/
+; 
+/*
+function incrementValue(e) {
+  e.preventDefault();
+  var fieldName = $(e.target).data('field');
+  var parent = $(e.target).closest('div');
+  var currentVal = parseInt(parent.find('input[name=' + fieldName + ']').val(), 10);
+
+  if (!isNaN(currentVal)) {
+    parent.find('input[name=' + fieldName + ']').val(currentVal + 1);
+  } else {
+    parent.find('input[name=' + fieldName + ']').val(0);
+  }
+}
+
+function decrementValue(e) {
+  e.preventDefault();
+  var fieldName = $(e.target).data('field');
+  var parent = $(e.target).closest('div');
+  var currentVal = parseInt(parent.find('input[name=' + fieldName + ']').val(), 0);
+
+  if (!isNaN(currentVal) && currentVal > 0) {
+    parent.find('input[name=' + fieldName + ']').val(currentVal - 1);
+  } else {
+    parent.find('input[name=' + fieldName + ']').val(0);
+  }
+}
+
+$('.input-group').on('click', '.button-plus', function(e) {
+  incrementValue(e);
+});
+
+$('.input-group').on('click', '.button-minus', function(e) {
+  decrementValue(e);
+});
+
+
+
+
+
 </script>
--->
+
 {% endblock %}

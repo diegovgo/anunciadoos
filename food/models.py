@@ -40,6 +40,7 @@ class TypeOf(models.Model):
     name = models.CharField(max_length=64)
     restaurante = models.ForeignKey(Restaurant, null=True, on_delete=models.CASCADE, related_name="typeof")
     title = models.CharField(max_length=64,blank=True)
+    order = models.IntegerField(blank=True, null=True)
 
     def __str__(self):
         return self.title
