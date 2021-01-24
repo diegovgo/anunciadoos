@@ -3,7 +3,7 @@
 
 <link rel="shortcut icon" href="{{ restaurant.logo.url }} " type="image/png">
 <meta name="title" content="Ingresa al menú digital de {{ restaurant.name }}"/>
-<meta name="description" content="{{ resturant.typeofs }}"/>
+<meta name="description" content="{{ elements }}"/>
 
 <style>
  .before-input , .input-group {
@@ -87,6 +87,7 @@ input[type="number"] {
    {% endblock %} 
 
 {% block body %}
+{{ description }}
 
 <div class="row">
     <div class="col" style="text-align: center; font-family: 'Sofia'">

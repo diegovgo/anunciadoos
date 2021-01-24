@@ -30,13 +30,16 @@ def restPage(request, url):
     typeofs = restaurant.typeof.order_by('order')
     ##dishes = Dishes.objects.filter(typeof)
     dishes = []
+    elements = ""
     for typeof in typeofs:
         dishes.extend(typeof.dishes.all())
+        elements = elements + " - " + typeof.name
     print(dishes)
     data = {
         'restaurant': restaurant,
         'dishes': dishes,
         'typeofs': typeofs,
+        'elements': elements,
         
     }
     print(dishes)
