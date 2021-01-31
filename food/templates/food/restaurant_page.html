@@ -1,9 +1,8 @@
 {% extends "food/base.html" %} {% load staticfiles %} 
 {% block head %}
 
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
 
 <link rel="shortcut icon" href="{{ restaurant.logo.url }} " type="image/png">
 <meta name="title" content="Ingresa al menú digital de {{ restaurant.name }}"/>
@@ -105,7 +104,6 @@ input:disabled{
       left:middle;
       position:absolute;
       opacity:1;
-      transition: opacity 1s;
     }
 
     .choose-button.hide {
@@ -116,13 +114,34 @@ input:disabled{
       display:None
     }
 
+    .select-number-buttons{
+      height: auto;
+      color:black;
+      font-size: 20px;
+      display:none
+    }
+    .the-number {
+      background-color: black;
+      color:white;
+      opacity: 85%;
+      text-align: center;
+      vertical-align: center;
+    }
+    .makeorder {
+      position: fixed;
+      width: 150px;
+      bottom:5px;
+      left:15px;
+    }
+
     
 </style>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
    {% endblock %} 
 
 {% block body %}
 <br>
+<input type="number" id="quantity" name="quantity" min="1" max="5" value="1">
 <div class="separation"></div>
 <div class="row">
     <div class="col" style="text-align: center; font-family: 'Sofia'">
@@ -172,14 +191,10 @@ input:disabled{
                         <div class="choose-button">
                           <button name="the-choosen" class="btn btn-success" value="0">Escoger</button> 
                         </div>
-                        <div class="select-number">
-                          <select name="dish-number" id="{{ restaurant.id }}">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">5</option>
-                            <option value="6">7</option>
-                          </select>
+                        <div class="select-number-buttons">
+                          <button class="btn btn-primary" name="numbers-buttons-minus">-</button>
+                          <input class="the-number" type="number" style="width: 25px" id="{{ dish.id }}" name="{{ dish.name }}" min="1" max="5" value="0">
+                          <button class="btn btn-primary" name="numbers-buttons-plus">+</button>
                         </div>
                       </div>
                                 
@@ -239,17 +254,121 @@ input:disabled{
     <a href="https://api.whatsapp.com/send?phone=+51{{ restaurant.phone }}&text=Vengo%20de%20Encuentrame.fun!%20Deseo%20pedir"> <img src="{% static 'static/wsp-logo.png' %}" alt="whatsapp" width=70px height="auto"></a>
 
 </div>
+<br><br><br><br>
+<div class="makeorder" >
+  <button class="btn btn-primary" style="padding:15px" onclick="myDishes()" data-toggle="modal" data-target="#myModal">Enviar Pedido por Whatsapp</button>
+
+</div>
+
+
+
+<div id="myModal" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">¡Este pedido será enviado por Whatsapp!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Te agradecemos por tu preferencia! recibirás una respuesta en breves minutos</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" onclick="sendRequest()" class="btn btn-primary">Enviar Pedido</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Modificar Pedido</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 
 <script>
 
 $("[name='the-choosen']").click( function () {
-  $(this).addClass("hide");
+  $(this).parent().hide();
+  console.log("hidden successfully");
+  c = $(this).parents('.input-box').children('.select-number-buttons');
+  c.show();
+  newval = c.children('.the-number');
+  newval.val("1");
+
+});
+
+$("[name='numbers-buttons-minus']").click( function () {
+  c = $(this).parent().children('.the-number');
+  if (c.val() == 1) {
+    newone = c.val("0");
+    console.log(newone);
+    console.log("no more less");
+    c.parent().hide();
+    let a =  c.parents(".input-box").children(".choose-button");
+    a.show();
+    console.log(a);
+  }
+  else {
+    let newone = +c.val() - 1;
+    c.val(newone);
+    console.log(newone);
+  }
+});
+
+$("[name='numbers-buttons-plus']").click( function () {
+  c = $(this).parent().children('.the-number');
+  let newone = +c.val() + 1;
+  c.val(newone);
+  console.log(newone);
+});
+
+
+
+finalList = [];
+
+function myDishes() {
+  finalList= [];
+  let maping_dishes = document.getElementsByClassName('the-number')
+  for (var i = 0; i < maping_dishes.length;i++) {
+    let val = maping_dishes[i].value;
+    let id  = maping_dishes[i].id;
+    let dish = maping_dishes[i].name;
+    finalList.push({
+      "quantity": val,
+      "id": id,
+      "name": dish,
+    })
+  };
+};
+
+
+
+function sendRequest() {
+  var wsp_message = " "
+  for (var k=0; k < finalList.length; k++) {
+    wsp_message = wsp_message + "dame " + finalList[k].quantity + " de " + finalList[k].name+ " - "
+  }
+  console.log(wsp_message);
+  window.open("https://api.whatsapp.com/send?phone=+51{{ restaurant.phone }}&text=Vengo%20de%20Encuentrame.fun!%20Deseo%20pedir:"+ wsp_message +"'");
+  console.log("sended");
+}
+
+$('#myModal').modal(options)
+
+$('#myModal').on('shown.bs.modal', function () {
+  $('#myInput').trigger('focus')
 })
-
-
-
+/*
+const getUserDishes = () => {
+  document.getElementsByClassName('the-number').then(response => {
+        response.data.map(element => {
+            let quantity = element.value;
+            let id = element.id;
+            console.log(quantify, id);
+            }
+        );
+    });
+};
+*/
 </script>
 
 {% endblock %}
