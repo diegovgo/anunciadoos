@@ -27,6 +27,13 @@ def restaurant(request):
 
 def restPage(request, url):
     restaurant = Restaurant.objects.get(url=url)
+    try:
+        my_districts = restaurant.district.all()
+    except:
+        my_districts = restaurant.district.filter()[0]
+        print(my_districts)
+    else:
+        print("Nothing went wrong")
     typeofs = restaurant.typeof.order_by('order')
     ##dishes = Dishes.objects.filter(typeof)
     dishes = []
@@ -34,12 +41,19 @@ def restPage(request, url):
     for typeof in typeofs:
         dishes.extend(typeof.dishes.all())
         elements = elements + " - " + typeof.name
-    print(dishes)
+
+    districts = ""
+    for my_district in my_districts:
+        districts = districts + " - " + my_district.name
+
+
+    print(districts)
     data = {
         'restaurant': restaurant,
         'dishes': dishes,
         'typeofs': typeofs,
         'elements': elements,
+        'districts': districts,
         
     }
     print(dishes)
