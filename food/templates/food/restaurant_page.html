@@ -9,70 +9,11 @@
 <meta name="description" content="{{ elements }}"/>
 
 <style>
-
-.qty .count {
-    color: #000;
-    display: inline-block;
-    vertical-align: top;
-    font-size: 25px;
-    font-weight: 700;
-    line-height: 30px;
-    padding: 0 2px
-    ;min-width: 35px;
-    text-align: center;
-}
-.qty .plus {
-    cursor: pointer;
-    display: inline-block;
-    vertical-align: top;
-    color: white;
-    width: 30px;
-    height: 30px;
-    font: 30px/1 Arial,sans-serif;
-    text-align: center;
-    border-radius: 50%;
-    }
-.qty .minus {
-    cursor: pointer;
-    display: inline-block;
-    vertical-align: top;
-    color: white;
-    width: 30px;
-    height: 30px;
-    font: 30px/1 Arial,sans-serif;
-    text-align: center;
-    border-radius: 50%;
-    background-clip: padding-box;
-}
-div {
-    text-align: center;
-}
-.minus:hover{
-    background-color: #717fe0 !important;
-}
-.plus:hover{
-    background-color: #717fe0 !important;
-}
-/*Prevent text selection*/
-span{
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-}
-input{  
-    border: 0;
-    width: 2%;
-}
-nput::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-input:disabled{
-    background-color:white;
-}
-        
-
+  .input-box{
+    width: 100%;
+    justify-content: center;
+    
+  }
 
     .contact {
     position: fixed;
@@ -91,7 +32,7 @@ input:disabled{
     }
 
     .section1 {
-        padding-top:110px
+        padding-top:25px
     }
 
     .choose-button{
@@ -102,7 +43,6 @@ input:disabled{
       vertical-align: center;
       top:middle;
       left:middle;
-      position:absolute;
       opacity:1;
     }
 
@@ -111,27 +51,29 @@ input:disabled{
     }
 
     .select-number {
-      display:None
+      display:None;
     }
 
     .select-number-buttons{
       height: auto;
-      color:black;
-      font-size: 20px;
-      display:none
+      color:white;
+      font-size: 15px;
+      display:none;
+      text-align: center;
     }
     .the-number {
-      background-color: black;
-      color:white;
+      background-color: white;
+      color:black;
       opacity: 85%;
       text-align: center;
       vertical-align: center;
+  
     }
     .makeorder {
       position: fixed;
       width: 150px;
       bottom:5px;
-      left:15px;
+      right:15px;
     }
 
     
@@ -141,7 +83,6 @@ input:disabled{
 
 {% block body %}
 <br>
-<input type="number" id="quantity" name="quantity" min="1" max="5" value="1">
 <div class="separation"></div>
 <div class="row">
     <div class="col" style="text-align: center; font-family: 'Sofia'">
@@ -180,45 +121,46 @@ input:disabled{
     {% for dish in dishes %} 
         {% if typeof.id == dish.typeof.id %}
 
-    <div class="card" style="width: 100%; margin:5px;display: inline-flex; background-color:white; color:#A64900; border-color:lightgray;box-shadow: 10px 5px 5px lightgray;opacity:90%; ">
-        <div class="row">
-
-            <div class="col-sm-3">
+    <div class="card" style=" width: 100%; margin:0; background-color:white; color:#A64900; border-color:lightgray;box-shadow: 10px 5px 5px lightgray;opacity:90%; ">
+  <div class="row" style="margin: 0;">
+            <div class="col-4" style="padding:20px 0 20px 0">
                 <div style="display: flex; align-items: center; justify-content: center; padding:5px">
-                <div  style="background-image: url('{{ dish.img.url }}'); background-position: center center; background-repeat: no-repeat; background-size: cover; width: 150px; height: 150px; border-radius: 25%;" >
-                  
-                      <div class="input-box">
-                        <div class="choose-button">
-                          <button name="the-choosen" class="btn btn-success" value="0">Escoger</button> 
-                        </div>
-                        <div class="select-number-buttons">
-                          <button class="btn btn-primary" name="numbers-buttons-minus">-</button>
-                          <input class="the-number" type="number" style="width: 25px" id="{{ dish.id }}" name="{{ dish.name }}" min="1" max="5" value="0">
-                          <button class="btn btn-primary" name="numbers-buttons-plus">+</button>
-                        </div>
-                      </div>
-                                
-                                
-                    
-                    <!--<embed src='{{ dish.img.url }} ' type="image/jpg" width="80%" height="auto" style="border-radius: 15px; margin:15px" />-->
-
+                <div  style="background-image: url('{{ dish.img.url }}'); background-position: center center; background-repeat: no-repeat; background-size: cover; width:100px; height: 100px; border-radius: 25%;" >
+                
                 </div>
-                </div>
+              </div>
+              
+              
+              
+              <!--<embed src='{{ dish.img.url }} ' type="image/jpg" width="80%" height="auto" style="border-radius: 15px; margin:15px" />-->
+              
             </div>
-
-            <div class="col-sm-8">
-                <div class="card-body ">
-
-                    <h5 class="card-title ">
-                        <strong><h4>{{ dish.name }}</h4></strong>
-                    </h5>
-                    <h5 class="card-title ">S/ {{ dish.price }}</h5>
-                    <p class="card-text " style="font-size:1em">{{ dish.description }}</p>
-                   
+            
+            
+            <div class="col" style="padding:0">
+              <div class="card-body" style="font-size: 12px; margin:0">
+                
+                <h5 class="row" style="margin:0;">
+                  <strong><h6>{{ dish.name }}</h6></strong>
+                </h5>
+                <h5 class="row" style="margin:0">S/ {{ dish.price }}</h5>
+                <p class="row" style="margin:0">{{ dish.description }}</p>
+                <div class="input-box">
+                  <div class="choose-button">
+                    <button name="the-choosen" class="btn btn-success" value="0">Escoger</button> 
+                  </div>
+                  <div class="select-number-buttons">
+                    <button class="btn btn-primary" name="numbers-buttons-minus" style="border-radius: 50%; opacity: 80%;">-</button>
+                    <input class="the-number" type="number" id="{{ dish.id }}" name="{{ dish.name }}" min="1" max="5" value="0">
+                    <button class="btn btn-primary" name="numbers-buttons-plus" style="border-radius: 50%; opacity: 80%;">+</button>
+                  </div>
+                </div>
+                
+                </div>
 
                 </div>
-            </div>
         </div>
+      
     </div>
 
     {% endif %} {% endfor %} {% endfor %}
@@ -250,10 +192,10 @@ input:disabled{
     {% endfor %}-->
 </div>
 
-<div class="contact">
+<!--<div class="contact">
     <a href="https://api.whatsapp.com/send?phone=+51{{ restaurant.phone }}&text=Vengo%20de%20Encuentrame.fun!%20Deseo%20pedir"> <img src="{% static 'static/wsp-logo.png' %}" alt="whatsapp" width=70px height="auto"></a>
 
-</div>
+</div>-->
 <br><br><br><br>
 <div class="makeorder" >
   <button class="btn btn-primary" style="padding:15px" onclick="myDishes()" data-toggle="modal" data-target="#myModal">Enviar Pedido por Whatsapp</button>
@@ -345,7 +287,12 @@ function myDishes() {
 function sendRequest() {
   var wsp_message = " "
   for (var k=0; k < finalList.length; k++) {
-    wsp_message = wsp_message + "dame " + finalList[k].quantity + " de " + finalList[k].name+ " - "
+    if (finalList[k].quantity == "0"){
+      console.log("element zero");
+    }
+    else {
+      wsp_message = wsp_message + "dame " + finalList[k].quantity + " de " + finalList[k].name+ " - "
+    }
   }
   console.log(wsp_message);
   window.open("https://api.whatsapp.com/send?phone=+51{{ restaurant.phone }}&text=Vengo%20de%20Encuentrame.fun!%20Deseo%20pedir:"+ wsp_message +"'");
