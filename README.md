@@ -1,2 +1,0 @@
-# anunciadoos
-for marketing purposes

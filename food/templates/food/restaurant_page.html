@@ -291,11 +291,11 @@ function sendRequest() {
       console.log("element zero");
     }
     else {
-      wsp_message = wsp_message + "dame " + finalList[k].quantity + " de " + finalList[k].name+ " - "
+      wsp_message = wsp_message + finalList[k].quantity + " de " + finalList[k].name+ " - "
     }
   }
   console.log(wsp_message);
-  window.open("https://api.whatsapp.com/send?phone=+51{{ restaurant.phone }}&text=Vengo%20de%20Encuentrame.fun!%20Deseo%20pedir:"+ wsp_message +"'");
+  window.open("https://api.whatsapp.com/send?phone=+51{{ restaurant.phone }}&text=Vengo%20de%20Encuentrame.fun!%20Deseo%20pedir: "+ wsp_message );
   console.log("sended");
 }
 
