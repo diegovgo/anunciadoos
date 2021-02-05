@@ -1,0 +1,321 @@
+{% extends "food/base.html" %} {% load staticfiles %} 
+{% block head %}
+
+
+
+
+<link rel="shortcut icon" href="{{ store.logo.url }} " type="image/png">
+<meta name="title" content="Ingresa al menú digital de {{ store.name }}"/>
+<meta name="description" content="{{ elements }}"/>
+
+<style>
+  .input-box{
+    width: 100%;
+    justify-content: center;
+    
+  }
+
+    .contact {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    }
+    .separation {
+        background-color: #F1A300;
+        height: 5px;
+        width: auto;
+        margin-bottom: 15px;
+    }
+ 
+    .contentf {
+        padding-top: 110px;
+    }
+
+    .section1 {
+        padding-top:25px
+    }
+
+    .choose-button{
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      color:white;
+      vertical-align: center;
+      top:middle;
+      left:middle;
+      opacity:1;
+    }
+
+    .choose-button.hide {
+      opacity: 0;
+    }
+
+    .select-number {
+      display:None;
+    }
+
+    .select-number-buttons{
+      height: auto;
+      color:white;
+      font-size: 15px;
+      display:none;
+      text-align: center;
+    }
+    .the-number {
+      background-color: white;
+      color:black;
+      opacity: 85%;
+      text-align: center;
+      vertical-align: center;
+  
+    }
+    .makeorder {
+      position: fixed;
+      width: 150px;
+      bottom:5px;
+      right:15px;
+    }
+
+    
+</style>
+
+   {% endblock %} 
+
+{% block body %}
+<br>
+<div class="separation"></div>
+<div class="row">
+    <div class="col" style="text-align: center; font-family: 'Sofia'">
+        <h1>
+            {{ store }}</h1>
+            <h2>Delivery a</h2>
+            
+            <h3>{{ districts }}</h3>
+
+        <embed src='{{ store.logo.url }}' type="image/jpg" width="100em" height="auto" style="border-radius: 15px; margin:15px" />
+
+    </div>
+
+</div>
+<div class="separation"></div>
+<div id="navbar" style="position: sticky; top:0; bottom:auto; background-color:white; z-index: 4; font-family: 'Sofia'">
+
+    <h1 style="text-align: center;">Artículos</h1>
+    <nav class="navbar">
+        <form class="form-inline">
+            {% for storesubcategory in storesubcategorys %}
+            <button name="navbutton" class="btn btn-outline-secondary" type="button" style="margin-left:10px; "><a href="#{{ storesubcategory.id }}" style=" text-decoration: none;color:gray"> {{storesubcategory.name }} </a></button> {% endfor %}
+        </form>
+    </nav>
+</div>
+
+<div id="content" style="color: black; font-family: 'Sofia ' ">
+
+    {% for storesubcategory in storesubcategorys %}
+    <a name="{{ storesubcategory.id }}"></a>
+    <div name="section" class="section1"></div>
+    
+    <!--style="background-image:url('https://cnnespanol.cnn.com/wp-content/uploads/2019/01/Galerias-nuevos-storees-2019-CNN-1.jpg?quality=100&amp;strip=info&amp;w=900&amp;h=506&amp;crop=1');">-->
+    <h3 style="position:sticky; top:auto"> {{ storesubcategory.name }}</a></h3><hr>
+
+    {% for article in articles %} 
+        {% if storesubcategory.id == article.storesubcategory.id %}
+
+    <div class="card" style=" width: 100%; margin:0; background-color:white; color:#A64900; border-color:lightgray;box-shadow: 10px 5px 5px lightgray;opacity:90%; ">
+  <div class="row" style="margin: 0;">
+            <div class="col-4" style="padding:20px 0 20px 0">
+                <div style="display: flex; align-items: center; justify-content: center; padding:5px">
+                <div  style="background-image: url('{{ dish.img.url }}'); background-position: center center; background-repeat: no-repeat; background-size: cover; width:100px; height: 100px; border-radius: 25%;" >
+                
+                </div>
+              </div>
+              
+              
+              
+              <!--<embed src='{{ article.img.url }} ' type="image/jpg" width="80%" height="auto" style="border-radius: 15px; margin:15px" />-->
+              
+            </div>
+            
+            
+            <div class="col" style="padding:0">
+              <div class="card-body" style="font-size: 12px; margin:0">
+                
+                <h5 class="row" style="margin:0;">
+                  <strong><h6>{{ article.name }}</h6></strong>
+                </h5>
+                <h5 class="row" style="margin:0">S/ {{ article.price }}</h5>
+                <p class="row" style="margin:0">{{ article.description }}</p>
+                <div class="input-box">
+                  <div class="choose-button">
+                    <button name="the-choosen" class="btn btn-success" value="0">Escoger</button> 
+                  </div>
+                  <div class="select-number-buttons">
+                    <button class="btn btn-primary" name="numbers-buttons-minus" style="border-radius: 50%; opacity: 80%;">-</button>
+                    <input class="the-number" type="number" id="{{ article.id }}" name="{{ article.name }}" min="1" max="5" value="0">
+                    <button class="btn btn-primary" name="numbers-buttons-plus" style="border-radius: 50%; opacity: 80%;">+</button>
+                  </div>
+                </div>
+                
+                </div>
+
+                </div>
+        </div>
+      
+    </div>
+
+    {% endif %} {% endfor %} {% endfor %}
+    <!--{% for dish in dishes %}
+
+    <div class="card" style="width: 100%; margin:5px;display: inline-flex; background-color:black; color:#F5A623; border-color:white ">
+        <div class="row">
+
+            <div class="col-sm-3">
+                <div class="container" style="text-align: center;">
+                    <embed src='{{ dish.img.url }} ' type="image/jpg" width="80%" height="auto" style="border-radius: 15px; margin:15px" />
+                </div>
+            </div>
+
+            <div class="col-sm-8">
+                <div class="card-body ">
+
+                    <h5 class="card-title ">
+                        <h4>{{ dish.name }}</h4>
+                    </h5>
+                    <h5 class="card-title ">S/ {{ dish.price }}</h5>
+                    <p class="card-text " style="font-size:1em">{{ dish.description }}</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% endfor %}-->
+</div>
+
+<!--<div class="contact">
+    <a href="https://api.whatsapp.com/send?phone=+51{{ store.phone }}&text=Vengo%20de%20Encuentrame.fun!%20Deseo%20pedir"> <img src="{% static 'static/wsp-logo.png' %}" alt="whatsapp" width=70px height="auto"></a>
+
+</div>-->
+<br><br><br><br>
+<div class="makeorder" >
+  <button class="btn btn-primary" style="padding:15px" onclick="myDishes()" data-toggle="modal" data-target="#myModal">Enviar Pedido por Whatsapp</button>
+
+</div>
+
+
+
+<div id="myModal" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">¡Este pedido será enviado por Whatsapp!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Te agradecemos por tu preferencia! recibirás una respuesta en breves minutos</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" onclick="sendRequest()" class="btn btn-primary">Enviar Pedido</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Modificar Pedido</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<script>
+
+$("[name='the-choosen']").click( function () {
+  $(this).parent().hide();
+  console.log("hidden successfully");
+  c = $(this).parents('.input-box').children('.select-number-buttons');
+  c.show();
+  newval = c.children('.the-number');
+  newval.val("1");
+
+});
+
+$("[name='numbers-buttons-minus']").click( function () {
+  c = $(this).parent().children('.the-number');
+  if (c.val() == 1) {
+    newone = c.val("0");
+    console.log(newone);
+    console.log("no more less");
+    c.parent().hide();
+    let a =  c.parents(".input-box").children(".choose-button");
+    a.show();
+    console.log(a);
+  }
+  else {
+    let newone = +c.val() - 1;
+    c.val(newone);
+    console.log(newone);
+  }
+});
+
+$("[name='numbers-buttons-plus']").click( function () {
+  c = $(this).parent().children('.the-number');
+  let newone = +c.val() + 1;
+  c.val(newone);
+  console.log(newone);
+});
+
+
+
+finalList = [];
+
+function myDishes() {
+  finalList= [];
+  let maping_dishes = document.getElementsByClassName('the-number')
+  for (var i = 0; i < maping_dishes.length;i++) {
+    let val = maping_dishes[i].value;
+    let id  = maping_dishes[i].id;
+    let dish = maping_dishes[i].name;
+    finalList.push({
+      "quantity": val,
+      "id": id,
+      "name": dish,
+    })
+  };
+};
+
+
+
+function sendRequest() {
+  var wsp_message = " "
+  for (var k=0; k < finalList.length; k++) {
+    if (finalList[k].quantity == "0"){
+      console.log("element zero");
+    }
+    else {
+      wsp_message = wsp_message + finalList[k].quantity + " de " + finalList[k].name+ " - "
+    }
+  }
+  console.log(wsp_message);
+  window.open("https://api.whatsapp.com/send?phone=+51{{ store.phone }}&text=Vengo%20de%20Encuentrame.fun!%20Deseo%20pedir: "+ wsp_message );
+  console.log("sended");
+}
+
+$('#myModal').modal(options)
+
+$('#myModal').on('shown.bs.modal', function () {
+  $('#myInput').trigger('focus')
+})
+/*
+const getUserDishes = () => {
+  document.getElementsByClassName('the-number').then(response => {
+        response.data.map(element => {
+            let quantity = element.value;
+            let id = element.id;
+            console.log(quantify, id);
+            }
+        );
+    });
+};
+*/
+</script>
+
+{% endblock %}

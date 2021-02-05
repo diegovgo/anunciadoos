@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import District, Restaurant, Dishes, Category, Saludinst, TypeOf
+from .models import District, Restaurant, Dishes, Category, Saludinst, TypeOf, Article, Storesubcategory, Store
 from django.http import HttpResponseRedirect, HttpResponse
 #from .forms import NoteForm, CustomUserForm, CreatePostForm, FileForm, MyUserForm
 #from rest_framework import viewsets
@@ -24,6 +24,13 @@ def restaurant(request):
     }
     return render(request, 'food/restaurants.html', data)
 
+def store(request):
+    stores = Store.objects.all()
+    print(store)
+    data = {
+        'stores': stores,
+    }
+    return render(request, 'food/store.html', data)
 
 def restPage(request, url):
     restaurant = Restaurant.objects.get(url=url)
@@ -58,6 +65,41 @@ def restPage(request, url):
     }
     print(dishes)
     return render(request, 'food/restaurant_page.html', data)
+
+def storePage(request, url):
+    store = Store.objects.get(url=url)
+    try:
+        my_districts = store.district.all()
+    except:
+        my_districts = store.district.filter()[0]
+        print(my_districts)
+    else:
+        print("Nothing went wrong")
+    storesubcategorys = store.storesubcategory.order_by('order')
+    print(storesubcategorys)
+    ##dishes = Dishes.objects.filter(typeof)
+    articles = []
+    elements = ""
+    for storesubcategory in storesubcategorys:
+        articles.extend(storesubcategory.article.all())
+        elements = elements + " - " + storesubcategory.name
+
+    districts = ""
+    for my_district in my_districts:
+        districts = districts + " - " + my_district.name
+
+
+    print(districts)
+    data = {
+        'store': store,
+        'articles': articles,
+        'storesubcategorys': storesubcategorys,
+        'elements': elements,
+        'districts': districts,
+        
+    }
+    print(articles)
+    return render(request, 'food/store_page.html', data)
 
 def salud(request):
     instituciones = Saludinst.objects.all()

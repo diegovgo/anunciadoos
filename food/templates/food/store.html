@@ -1,0 +1,24 @@
+{% extends "food/base.html" %} {% load static %}
+{% block head %}
+<link rel="shortcut icon" href="{% static 'static/logo.png' %}" type="image/png">
+
+{% endblock %}
+{% block heading %}
+
+<h1>Escoge una tienda:</h1>{% endblock %} {% block body %} {{ store }} {% for store in stores %}
+    <div style="width: 100%;">
+        <div class="row">
+
+            <div class="col-12">
+                <a href="{% url 'store_page' store.url %}" style="text-decoration: none;">
+                    <h2>{{ store }}</h2></a>
+            <div class="col-1">
+                <embed src='{{ store.logo.url }}' type="image/jpg" width="150px" height="auto" style="border-radius: 15px; margin:15px" />
+                
+            </div>
+            </div>
+            <hr>
+        </div>
+    </div>
+
+{% endfor %} {% endblock %}

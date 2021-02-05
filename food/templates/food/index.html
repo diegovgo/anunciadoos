@@ -11,11 +11,23 @@
 <div class="card">{% with 'static/background_restaurants.png' as image_static %}
 
     <div class="card-body" style='background-image: url(" {% static image_static  %} ");opacity: 100%; '> {% endwith %}
-        <h5 class="card-title text-white ">Comida</h5>
+        <h1 class="card-title text-white ">Comida</h1>
         <h5 class="card-title text-white ">Encuentra los mejores restaurantes de Lima</h5>
-        <p class="card-text text-white ">With supporting text below as a natural lead-in to additional content.</p>
+
         <a href="{% url 'comida' %} " class="btn btn-primary ">Visita ahora</a>
     </div>
+</div>
+<br>
+
+<div class="card">{% with 'static/background_restaurants.png' as image_static %}
+
+    <div class="card-body" style='background-image: url(" {% static image_static  %} ");opacity: 100%; '> {% endwith %}
+        <h1 class="card-title text-white ">Abarrotes</h1>
+        <h5 class="card-title text-white ">Encuentra todo lo que estás buscando para tu cuarentena</h5>
+
+        <a href="{% url 'store' %} " class="btn btn-primary ">Visita ahora</a>
+    </div>
+
 </div>
 
 <br>
