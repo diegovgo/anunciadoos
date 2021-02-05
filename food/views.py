@@ -76,7 +76,7 @@ def storePage(request, url):
     else:
         print("Nothing went wrong")
     storesubcategorys = store.storesubcategory.order_by('order')
-    print(storesubcategorys)
+   
     ##dishes = Dishes.objects.filter(typeof)
     articles = []
     elements = ""
@@ -98,7 +98,7 @@ def storePage(request, url):
         'districts': districts,
         
     }
-    print(articles)
+    
     return render(request, 'food/store_page.html', data)
 
 def salud(request):
