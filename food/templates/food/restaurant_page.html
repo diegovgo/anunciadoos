@@ -9,6 +9,28 @@
 <meta name="description" content="{{ elements }}"/>
 
 <style>
+
+div.scrollmenu {
+  background-color: #333;
+  overflow: auto;
+  white-space: nowrap;
+  position:sticky;
+  top:0px;
+  z-index:111 ;
+}
+            
+div.scrollmenu a {
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 14px;
+  text-decoration: none;
+}
+            
+div.scrollmenu a:hover {
+  background-color: #777;
+}
+           
   .input-box{
     width: 100%;
     justify-content: center;
@@ -90,7 +112,7 @@
             {{ restaurant }}</h1>
             <h2>Delivery a</h2>
             
-            <h3>{{ districts }}</h3>
+            <h3 style="font-size: 17px;">{{ districts }}</h3>
 
         <embed src='{{ restaurant.logo.url }}' type="image/jpg" width="100em" height="auto" style="border-radius: 15px; margin:15px" />
 
@@ -101,12 +123,18 @@
 <div id="navbar" style="position: sticky; top:0; bottom:auto; background-color:white; z-index: 4; font-family: 'Sofia'">
 
     <h1 style="text-align: center;">Menú del Día</h1>
-    <nav class="navbar">
+    <div class="scrollmenu">
+      {% for typeof in typeofs %}
+      <a href="#{{ typeof.id }}">{{ typeof.name }}</a>
+      
+      {% endfor %}
+    </div>
+    <!--<nav class="navbar">
         <form class="form-inline">
             {% for typeof in typeofs %}
             <button name="navbutton" class="btn btn-outline-secondary" type="button" style="margin-left:10px; "><a href="#{{ typeof.id }}" style=" text-decoration: none;color:gray"> {{typeof.name }} </a></button> {% endfor %}
         </form>
-    </nav>
+    </nav>-->
 </div>
 
 <div id="content" style="color: black; font-family: 'Sofia ' ">
