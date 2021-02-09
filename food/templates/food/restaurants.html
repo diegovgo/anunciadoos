@@ -8,12 +8,13 @@
 <h1>Escoge una restaurante:</h1>{% endblock %} {% block body %} {% for restaurant in restaurants %}
     <div style="width: 100%;">
         <div class="row">
-
+            
+            <a href="{% url 'restaurant_page' restaurant.url %}" style="text-decoration: none;">
             <div class="col-12">
-                <a href="{% url 'restaurant_page' restaurant.url %}" style="text-decoration: none;">
-                    <h2>{{ restaurant }}</h2></a>
-            <div class="col-1">
-                <embed src='{{ restaurant.logo.url }}' type="image/jpg" width="150px" height="auto" style="border-radius: 15px; margin:15px" />
+                    <h2>{{ restaurant }}</h2>
+                    <div class="col-1">
+                        <embed src='{{ restaurant.logo.url }}' type="image/jpg" width="150px" height="auto" style="border-radius: 15px; margin:15px" />
+                    </a>
                 
             </div>
             </div>
