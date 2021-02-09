@@ -7,7 +7,7 @@ from rest_framework import routers
 
 urlpatterns = [
     path("", views.index, name="index"),
-    path("comida", views.restaurant, name="comida"),
+    path("restaurantes", views.restaurant, name="restaurants"),
     path("abarrotes", views.store, name="store"),
     path("restaurante/<url>", views.restPage, name="restaurant_page"),
     path("abarrote/<url>", views.storePage, name="store_page"),

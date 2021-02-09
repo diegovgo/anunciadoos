@@ -7,16 +7,17 @@
 {% block heading %}
 <h1>Escoge una categoría {% endblock %} {% block body %}
 </h1>
-
+<a href="{% url 'restaurants' %} ">
 <div class="card">{% with 'static/background_restaurants.png' as image_static %}
 
     <div class="card-body" style='background-image: url(" {% static image_static  %} ");opacity: 100%; '> {% endwith %}
-        <h1 class="card-title text-white ">Comida</h1>
+        <h1 class="card-title text-white ">Restaurantes</h1>
         <h5 class="card-title text-white ">Encuentra los mejores restaurantes de Lima</h5>
 
-        <a href="{% url 'comida' %} " class="btn btn-primary ">Visita ahora</a>
+        <a href="{% url 'restaurants' %} " class="btn btn-primary ">Visita ahora</a>
     </div>
 </div>
+</a>
 <br>
 
 <div class="card">{% with 'static/background_restaurants.png' as image_static %}
