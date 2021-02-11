@@ -7,7 +7,7 @@
 {% block heading %}
 <h1>Escoge una categoría {% endblock %} {% block body %}
 </h1>
-<a href="{% url 'restaurants' %} ">
+<a href="{% url 'restaurants' %} " style="text-decoration: none;">
 <div class="card">{% with 'static/background_restaurants.png' as image_static %}
 
     <div class="card-body" style='background-image: url(" {% static image_static  %} ");opacity: 100%; '> {% endwith %}
@@ -19,7 +19,7 @@
 </div>
 </a>
 <br>
-
+<a href="{% url 'store' %} " style="text-decoration: none;">
 <div class="card">{% with 'static/background_restaurants.png' as image_static %}
 
     <div class="card-body" style='background-image: url(" {% static image_static  %} ");opacity: 100%; '> {% endwith %}
@@ -30,6 +30,7 @@
     </div>
 
 </div>
+</a>
 
 <br>
 <!--

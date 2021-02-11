@@ -51,7 +51,7 @@ class Storesubcategory(models.Model):
 class Article(models.Model):
     name = models.CharField(max_length=120)
     published = models.BooleanField(default=False)
-    description = models.TextField()
+    description = models.TextField(blank=True, null=True)
     img = models.ImageField(upload_to="static/imgs", null=True, blank=True, default="static/imgs/article_default.jpg")
     price = models.DecimalField(max_digits=10, decimal_places=2)
     storesubcategory = models.ForeignKey(Storesubcategory, null=True, on_delete=models.CASCADE, related_name="article")

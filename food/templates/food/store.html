@@ -6,19 +6,22 @@
 {% block heading %}
 
 <h1>Escoge una tienda:</h1>{% endblock %} {% block body %} {{ store }} {% for store in stores %}
-    <div style="width: 100%;">
-        <div class="row">
+   
+<div style="width: auto; text-align:center">
 
-            <div class="col-12">
-                <a href="{% url 'store_page' store.url %}" style="text-decoration: none;">
-                    <h2>{{ store }}</h2></a>
-            <div class="col-1">
-                <embed src='{{ store.logo.url }}' type="image/jpg" width="150px" height="auto" style="border-radius: 15px; margin:15px" />
+    <a href="{% url 'store_page' store.url %}" style="text-decoration: none;">
+        <div class="card" style="background-color:lightgrey; border-color: lightgray; opacity: 90%; height: 150px;">
+        <div class="card-body">
+                <h2>{{ store }}
+                
+                    <img src='{{ store.logo.url }}' type="image/jpg" width="auto" height="70px" style="border-radius: 15px; margin:15px" />
+                </h2>
+                </div>
                 
             </div>
-            </div>
-            <hr>
+        </a>
+        <hr>
         </div>
-    </div>
+        
 
 {% endfor %} {% endblock %}
