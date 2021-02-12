@@ -125,7 +125,7 @@ div.scrollmenu a:hover {
     <h1 style="text-align: center;">Menú del Día</h1>
     <div class="scrollmenu">
       {% for typeof in typeofs %}
-      <a href="#{{ typeof.id }}">{{ typeof.name }}</a>
+      <a><div goto="{{ typeof.id }}"> {{ typeof.name }}</div></a>
       
       {% endfor %}
     </div>
@@ -140,11 +140,11 @@ div.scrollmenu a:hover {
 <div id="content" style="color: black; font-family: 'Sofia ' ">
 
     {% for typeof in typeofs %}
-    <a name="{{ typeof.id }}"></a>
+    
     <div name="section" class="section1"></div>
     
     <!--style="background-image:url('https://cnnespanol.cnn.com/wp-content/uploads/2019/01/Galerias-nuevos-restaurantes-2019-CNN-1.jpg?quality=100&amp;strip=info&amp;w=900&amp;h=506&amp;crop=1');">-->
-    <h3 style="position:sticky; top:auto"> {{ typeof.name }}</a></h3><hr>
+    <h3 id="{{ typeof.id }}" style="position:sticky; top:auto"> {{ typeof.name }}</a></h3><hr>
 
     {% for dish in dishes %} 
         {% if typeof.id == dish.typeof.id %}
@@ -310,6 +310,17 @@ function myDishes() {
   };
 };
 
+$('#navbar div div').click( function () {
+    console.log("clickeado baby");
+    let section = $(this)
+    console.log(section);
+    let id = "#" + $(section).attr('goto'); 
+    console.log(id);           
+    let top = $(id).position().top;
+    top = top - 130;
+    $('html').scrollTop(top);
+  });
+
 
 
 function sendRequest() {
@@ -323,7 +334,7 @@ function sendRequest() {
     }
   }
   console.log(wsp_message);
-  window.open("https://api.whatsapp.com/send?phone=+51{{ restaurant.phone }}&text=Vengo%20de%20Encuentrame.fun!%20Deseo%20pedir: "+ wsp_message );
+  window.open("https://api.whatsapp.com/send?phone=+51{{ restaurant.phone }}&text=Te%20encontré%20en%20Encuentrame.fun!%20Deseo%20pedir: "+ wsp_message );
   console.log("sended");
 }
 
@@ -331,7 +342,12 @@ $('#myModal').modal(options)
 
 $('#myModal').on('shown.bs.modal', function () {
   $('#myInput').trigger('focus')
-})
+});
+
+/*
+function sendMe() {
+  console.log("hallo");
+}
 /*
 const getUserDishes = () => {
   document.getElementsByClassName('the-number').then(response => {
