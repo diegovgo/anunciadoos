@@ -25,6 +25,7 @@
 
 <body>
     <div style="text-align:center; background-color:#FFD933 ;">
+        <img name="back-button" src="{% static '/static/back-icon.png' %}" alt="back" height="60px" style="left:0; top:15px; position: absolute;">
         <img src="{% static '/static/logo.png' %}" alt="anunciados" width="90px" height="auto">
     </div>
     
@@ -36,4 +37,11 @@
 
 </body>
 
+
+<script>
+$("[name='back-button']").click( function  () {
+    window.history.back();
+})
+
+</script>
 </html>
