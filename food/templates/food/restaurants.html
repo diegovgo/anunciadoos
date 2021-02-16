@@ -11,9 +11,10 @@
         <a href="{% url 'restaurant_page' restaurant.url %}" style="text-decoration: none;">
             <div class="card" style="background-color:lightgrey; border-color: lightgray; opacity: 90%; height: 150px;">
             <div class="card-body">
-                    <h2>{{ restaurant }}
-                    
-                        <img src='{{ restaurant.logo.url }}' type="image/jpg" width="auto" height="70px" style="border-radius: 15px; margin:15px" />
+                
+                <h2>
+                <img src='{{ restaurant.logo.url }}' type="image/jpg" width="auto" height="70px" style="border-radius: 15px; margin:15px" />
+                    {{ restaurant }}
                     </h2>
                     </div>
                     

@@ -11,7 +11,6 @@
 <style>
 
 div.scrollmenu {
-  background-color: #333;
   overflow: auto;
   white-space: nowrap;
   position:sticky;
@@ -20,8 +19,10 @@ div.scrollmenu {
 }
             
 div.scrollmenu a {
+  border: 1px;
+  border-color: gray;
   display: inline-block;
-  color: white;
+  color: black;
   text-align: center;
   padding: 14px;
   text-decoration: none;
@@ -93,9 +94,15 @@ div.scrollmenu a:hover {
     }
     .makeorder {
       position: fixed;
-      width: 150px;
-      bottom:5px;
-      right:15px;
+      width: 100%;
+      bottom:0px;
+      right:0px;
+    }
+
+    .categories {
+      border: 1px;
+      border: grey;
+      border-radius: 15px;
     }
 
     
@@ -109,7 +116,14 @@ div.scrollmenu a:hover {
 <div class="row">
     <div class="col" style="text-align: center; font-family: 'Sofia'">
         <h1>
-            {{ restaurant }}</h1>
+            {{ restaurant }}
+          </h1>
+
+            <div style="background-color: greenyellow; width: auto; color: black; border-radius: 10px;">Abierto</div>
+            
+            <!--
+            <div style="background-color: rgb(255, 133, 133); width: auto; color: black; border-radius: 10px;">Cerrado</div>
+            -->
             <h2>Delivery a</h2>
             
             <h3 style="font-size: 17px;">{{ districts }}</h3>
@@ -122,13 +136,19 @@ div.scrollmenu a:hover {
 <div class="separation"></div>
 <div id="navbar" style="position: sticky; top:0; bottom:auto; background-color:white; z-index: 4; font-family: 'Sofia'">
 
-    <h1 style="text-align: center;">Menú del Día</h1>
+    <h1 style="text-align: center;">Menú del Día
+    </h1>
+
+<!--Nav Bar-->
+
     <div class="scrollmenu">
       {% for typeof in typeofs %}
-      <a><div goto="{{ typeof.id }}"> {{ typeof.name }}</div></a>
+      <a style="border:1px"><div class="categories"  goto="{{ typeof.id }}"> {{ typeof.name }}</div></a>
       
       {% endfor %}
     </div>
+
+
     <!--<nav class="navbar">
         <form class="form-inline">
             {% for typeof in typeofs %}
@@ -226,7 +246,8 @@ div.scrollmenu a:hover {
 </div>-->
 <br><br><br><br>
 <div class="makeorder" >
-  <button class="btn btn-primary" style="padding:15px" onclick="myDishes()" data-toggle="modal" data-target="#myModal">Enviar Pedido por Whatsapp</button>
+  <button class="btn btn-success" style="padding:15px; width: 100%; border-radius: 15px 15px 0 0;" onclick="myDishes()" data-toggle="modal" data-target="#myModal">Enviar Pedido por Whatsapp    
+    <img src="{% static '/static/wsp-logo.png'  %}" alt="whatsapp-logo" height="25px"></button>
 
 </div>
 
@@ -236,7 +257,9 @@ div.scrollmenu a:hover {
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">¡Este pedido será enviado por Whatsapp!</h5>
+        <h5 class="modal-title">¡Este pedido será enviado por Whatsapp! 
+          
+        </h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
