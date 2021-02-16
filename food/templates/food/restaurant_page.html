@@ -260,18 +260,28 @@ div.scrollmenu a:hover {
         <h5 class="modal-title">¡Este pedido será enviado por Whatsapp! 
           
         </h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button type="button"  onclick="eraseCurrentSelected()"   class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
         <p>Te agradecemos por tu preferencia! recibirás una respuesta en breves minutos</p>
-      </div>
+        <div class="row">
+          <div class="col">
+            Artículo
+          </div>
+          <div class="col">
+            Cantidad
+          </div>
+
+          </div>
+        </div>
+      
       <div class="modal-footer">
         <button type="button" onclick="sendRequest()" class="btn btn-primary">Enviar Pedido</button>
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Modificar Pedido</button>
-      </div>
-    </div>
+        <button name="back" type="button" onclick="eraseCurrentSelected()" class="btn btn-danger" data-dismiss="modal">Modificar Pedido</button>
+
+
   </div>
 </div>
 
@@ -325,12 +335,17 @@ function myDishes() {
     let val = maping_dishes[i].value;
     let id  = maping_dishes[i].id;
     let dish = maping_dishes[i].name;
-    finalList.push({
-      "quantity": val,
-      "id": id,
-      "name": dish,
-    })
+    if (val > 0){
+      finalList.push({
+        "quantity": val,
+        "id": id,
+        "name": dish,
+      })
+    } 
   };
+  for (var k=0; k < finalList.length; k++) {
+    $('.modal-body').append(' <div class="row"> <div class="col"> '+finalList[k].name +' </div> <div class="col">'+ finalList[k].quantity +' </div></div>   '  );
+  }
 };
 
 $('#navbar div div').click( function () {
@@ -344,23 +359,33 @@ $('#navbar div div').click( function () {
     $('html').scrollTop(top);
   });
 
-
-
-function sendRequest() {
-  var wsp_message = " "
-  for (var k=0; k < finalList.length; k++) {
-    if (finalList[k].quantity == "0"){
-      console.log("element zero");
+  
+  
+  function sendRequest() {
+    var wsp_message = " "
+    for (var k=0; k < finalList.length; k++) {
+      if (finalList[k].quantity == "0"){
+        console.log("element zero");
+      }
+      else {
+        wsp_message = wsp_message + finalList[k].quantity + " " + finalList[k].name+ " - ";
+        
+        
+      }
     }
-    else {
-      wsp_message = wsp_message + finalList[k].quantity + " " + finalList[k].name+ " - "
-    }
+    console.log(wsp_message);
+    window.open("https://api.whatsapp.com/send?phone=+51{{ restaurant.phone }}&text=Te%20encontré%20en%20Encuentrame.fun!%20Deseo%20pedir: "+ wsp_message );
+    console.log("sended");
   }
-  console.log(wsp_message);
-  window.open("https://api.whatsapp.com/send?phone=+51{{ restaurant.phone }}&text=Te%20encontré%20en%20Encuentrame.fun!%20Deseo%20pedir: "+ wsp_message );
-  console.log("sended");
-}
+  
+  
+  function eraseCurrentSelected () {
+    console.log("backin!!!");
+    $('.modal-body div').empty();
+    
 
+  }
+  
 $('#myModal').modal(options)
 
 $('#myModal').on('shown.bs.modal', function () {
