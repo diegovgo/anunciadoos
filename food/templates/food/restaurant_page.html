@@ -140,10 +140,14 @@ div.scrollmenu a:hover {
     </h1>
 
 <!--Nav Bar-->
-
-    <div class="scrollmenu">
+<div class="scrollmenu">
+  <strong>
+    Busca por categorías: 
+      </strong>
+        <br>
+      
       {% for typeof in typeofs %}
-      <a style="border:1px"><div class="categories"  goto="{{ typeof.id }}"> {{ typeof.name }}</div></a>
+      <a style="color:#3089FF"><div class="categories"  goto="{{ typeof.id }}"> {{ typeof.name }}</div></a>
       
       {% endfor %}
     </div>
