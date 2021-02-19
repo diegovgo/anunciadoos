@@ -113,13 +113,11 @@ div.scrollmenu a:hover {
 {% block body %}
 <br>
 <div class="separation"></div>
-<div class="row">
-    <div class="col" style="text-align: center; font-family: 'Sofia'">
+<div class="container" style="text-align: center; font-family: 'Sofia'">
         <h1>
             {{ restaurant }}
           </h1>
-
-            <div style="background-color: greenyellow; width: auto; color: black; border-radius: 10px;">Abierto</div>
+<h5 style="color:white; font-family:'Arial'; background-color: green; margin:0 35% 0 35% ; border-radius: 15px; font-size:15px" >  Abierto</h5>
             
             <!--
             <div style="background-color: rgb(255, 133, 133); width: auto; color: black; border-radius: 10px;">Cerrado</div>
@@ -130,7 +128,6 @@ div.scrollmenu a:hover {
 
         <embed src='{{ restaurant.logo.url }}' type="image/jpg" width="100em" height="auto" style="border-radius: 15px; margin:15px" />
 
-    </div>
 
 </div>
 <div class="separation"></div>
@@ -140,12 +137,10 @@ div.scrollmenu a:hover {
     </h1>
 
 <!--Nav Bar-->
+<strong>
+  Busca por categorías: 
+</strong>
 <div class="scrollmenu">
-  <strong>
-    Busca por categorías: 
-      </strong>
-        <br>
-      
       {% for typeof in typeofs %}
       <a style="color:#3089FF"><div class="categories"  goto="{{ typeof.id }}"> {{ typeof.name }}</div></a>
       
