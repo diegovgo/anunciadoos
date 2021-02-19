@@ -6,22 +6,36 @@
 {% block heading %}
 
 <h1>Escoge un restaurante:</h1>{% endblock %} {% block body %} {% for restaurant in restaurants %}
-    <div style="width: auto; text-align:center">
+<a href="{% url 'restaurant_page' restaurant.url %}" style="text-decoration: none;">
+    <div style="width: auto; text-align:left">
 
-        <a href="{% url 'restaurant_page' restaurant.url %}" style="text-decoration: none;">
-            <div class="card" style="background-color:lightgrey; border-color: lightgray; opacity: 90%; height: 150px;">
+        <div class="card" style="background-color:white; border-color: lightgray; opacity: 90%; height: 150px; border-radius: 30px; box-shadow: 5px 5px 3px 3px #888888;">
             <div class="card-body">
-                
-                <h2>
-                <img src='{{ restaurant.logo.url }}' type="image/jpg" width="auto" height="70px" style="border-radius: 15px; margin:15px" />
-                    {{ restaurant }}
-                    </h2>
+                <div class="row">
+                    <div class="col-4">
+                        <img src='{{ restaurant.logo.url }}' type="image/jpg" width="auto" height="50px" style="border-radius: 15px; margin:15px" />
                     </div>
-                    
+                    <div class="col-8">
+                        <div class="row">
+                            <div class="col">
+                        <h2 style="font-size: 17px;">
+                            {{ restaurant }}
+                            </h2>
+                            </div>
+                            <div class="col">
+                                <div class="container" style="border-radius: 9px; font-size: 10px; background-color: green;width: 70px; color:white">Abierto</div>
+                            </div>
+                        </div>
+                            <p style="color:black">Delivery price</p>
+                            <p>{{ restaurant.description  }}</p>
+                    </div>
                 </div>
-            </a>
-            <hr>
+                        <p style="color:black; font-size: 12px;"> typeofs - asdads - asdsadasd </p>
+            </div>
         </div>
+    </div>
+    <hr>
+</a>
 
 
 {% endfor %} {% endblock %}
