@@ -166,7 +166,11 @@ div.scrollmenu a:hover {
     <h3 id="{{ typeof.id }}" style="position:sticky; top:auto"> {{ typeof.name }}</a></h3><hr>
 
     {% for dish in dishes %} 
-        {% if typeof.id == dish.typeof.id %}
+    {% if typeof.id == dish.typeof.id %}
+    
+    {% if dish.published == 1 %}
+
+
 
     <div class="card" style=" width: 100%; margin:0; background-color:white; color:#A64900; border-color:lightgray;box-shadow: 10px 5px 5px lightgray;opacity:90%; ">
   <div class="row" style="margin: 0;">
@@ -209,7 +213,7 @@ div.scrollmenu a:hover {
         </div>
       
     </div>
-
+    {% endif %}
     {% endif %} {% endfor %} {% endfor %}
     <!--{% for dish in dishes %}
 
