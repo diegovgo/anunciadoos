@@ -13,29 +13,37 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-4">
-                        <img src='{{ restaurant.logo.url }}' type="image/jpg" width="auto" height="50px" style="border-radius: 15px; margin:15px" />
+                        <img src='{{ restaurant.logo }}' type="image/jpg" width="auto" height="50px" style="border-radius: 15px; margin:15px" />
                     </div>
                     <div class="col-8">
                         <div class="row">
                             <div class="col">
                         <h2 style="font-size: 17px;">
-                            {{ restaurant }}
+                            {{ restaurant.name }}
                             </h2>
                             </div>
                             <div class="col">
                                 <div class="container" style="border-radius: 9px; font-size: 10px; background-color: green;width: 70px; color:white">Abierto</div>
                             </div>
                         </div>
-                            <p style="color:black">Delivery price</p>
-                            <p>{{ restaurant.description  }}</p>
+                            <p style="color:black">Delivery: S/ {{ restaurant.deliveryprice }} </p>
+
+                            <p></p>
                     </div>
                 </div>
-                        <p style="color:black; font-size: 12px;"> typeofs - asdads - asdsadasd </p>
+                        <p style="color:black; font-size: 12px;"> 
+                            {% with typeofs=restaurant.categorys %}
+                           {% for typeof in typeofs %}
+                           - {{ typeof.name }}
+                           {% endfor %}
+                            {% endwith %}
+                        </p>
             </div>
         </div>
     </div>
     <hr>
 </a>
+
 
 
 {% endfor %} {% endblock %}

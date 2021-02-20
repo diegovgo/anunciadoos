@@ -17,10 +17,32 @@ def index(request):
     return render(request, 'food/index.html', data)
 
 
+
+
 def restaurant(request):
     restaurants = Restaurant.objects.all()
+    class Restaurantin:
+        def __init__(self, name, url, categorys, logo, description, deliveryprice):
+            self.name = name
+            self.url = url
+            self.categorys = categorys
+            self.logo = logo
+            self.description = description
+            self.deliveryprice = deliveryprice
+
+    restaurants_lists = list()
+
+    for restaurant in restaurants:
+        restaurants_lists.append(Restaurantin(restaurant.name, restaurant.url, restaurant.typeof.all() , restaurant.logo.url, "blablablab", "3.99"))
+
+    bravewings = restaurants_lists[2]
+    diegos = bravewings.categorys
+    for diego in diegos:
+        print(diego.name)
+
+
     data = {
-        'restaurants': restaurants,
+        'restaurants': restaurants_lists
     }
     return render(request, 'food/restaurants.html', data)
 
@@ -63,7 +85,7 @@ def restPage(request, url):
         'districts': districts,
         
     }
-    print(dishes)
+    print(typeofs)
     return render(request, 'food/restaurant_page.html', data)
 
 def storePage(request, url):
