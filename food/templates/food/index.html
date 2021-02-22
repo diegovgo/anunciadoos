@@ -8,9 +8,9 @@
 <h1>Escoge una categoría {% endblock %} {% block body %}
 </h1>
 <a href="{% url 'restaurants' %} " style="text-decoration: none;">
-<div class="card">{% with 'static/background_restaurants.png' as image_static %}
+<div class="card" style="border-radius: 25px;">{% with 'static/background_restaurants.png' as image_static %}
 
-    <div class="card-body" style='background-image: url(" {% static image_static  %} ");opacity: 100%; '> {% endwith %}
+    <div class="card-body" style='background-image: url(" {% static image_static  %} ");opacity: 100%; border-radius: 25px;'> {% endwith %}
         <h1 class="card-title text-white ">Restaurantes</h1>
         <h5 class="card-title text-white ">Encuentra los mejores restaurantes de Lima</h5>
 
@@ -20,9 +20,9 @@
 </a>
 <br>
 <a href="{% url 'store' %} " style="text-decoration: none;">
-<div class="card">{% with 'static/background_restaurants.png' as image_static %}
+<div class="card" style="border-radius: 25px;">{% with 'static/background_restaurants.png' as image_static %}
 
-    <div class="card-body" style='background-image: url(" {% static image_static  %} ");opacity: 100%; '> {% endwith %}
+    <div class="card-body" style='background-image: url(" {% static image_static  %} ");opacity: 100%;border-radius: 25px; '> {% endwith %}
         <h1 class="card-title text-white ">Abarrotes</h1>
         <h5 class="card-title text-white ">Encuentra todo lo que estás buscando para tu cuarentena</h5>
 

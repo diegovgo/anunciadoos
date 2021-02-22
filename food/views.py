@@ -21,10 +21,30 @@ def index(request):
 
 def restaurant(request):
     restaurants = Restaurant.objects.all()
+    districts = District.objects.all()
+    sjl = districts.first()
+    sjl_rest = sjl.restaurant.all()
+
+    class DistrictSelect:
+        def __init__(self, id, name, restaurants):
+            self.id = id
+            self.name = name
+            self.restaurants = restaurants
+    
+    list_of_restaurants = list()
+
+    for district in districts:
+        list_of_restaurants.append(DistrictSelect(district.id, district.name, district.restaurant.all()))
+
+    #print(list_of_restaurants)
+
+    print(list_of_restaurants)
+
     class Restaurantin:
-        def __init__(self, name, url, categorys, logo, description, deliveryprice):
+        def __init__(self, name, url, id, categorys, logo, description, deliveryprice):
             self.name = name
             self.url = url
+            self.id = id
             self.categorys = categorys
             self.logo = logo
             self.description = description
@@ -33,16 +53,18 @@ def restaurant(request):
     restaurants_lists = list()
 
     for restaurant in restaurants:
-        restaurants_lists.append(Restaurantin(restaurant.name, restaurant.url, restaurant.typeof.all() , restaurant.logo.url, "blablablab", "3.99"))
+        restaurants_lists.append(Restaurantin(restaurant.name, restaurant.url, restaurant.id, restaurant.typeof.all() , restaurant.logo.url, "blablablab", "3.99"))
 
     bravewings = restaurants_lists[2]
     diegos = bravewings.categorys
     for diego in diegos:
         print(diego.name)
 
+    #print(bravewings.districts)
 
     data = {
-        'restaurants': restaurants_lists
+        'restaurants': restaurants_lists,
+        'districts': districts
     }
     return render(request, 'food/restaurants.html', data)
 
@@ -88,6 +110,42 @@ def restPage(request, url):
     print(typeofs)
     return render(request, 'food/restaurant_page.html', data)
 
+def restDistrict(request, district_url):
+    current_district = District.objects.get(url=district_url)
+    
+    print(current_district)
+    
+    districts = District.objects.all()
+
+    restaurants = current_district.restaurant.all()
+    print(restaurants)
+    class Restauranton:
+        def __init__(self, name, url, id, categorys, logo, description, deliveryprice):
+            self.name = name
+            self.url = url
+            self.id = id
+            self.categorys = categorys
+            self.logo = logo
+            self.description = description
+            self.deliveryprice = deliveryprice
+
+    restaurants_lists = list()
+
+    for restaurant in restaurants:
+        restaurants_lists.append(Restauranton(restaurant.name, restaurant.url, restaurant.id, restaurant.typeof.all() , restaurant.logo.url, "blablablab", "3.99"))
+
+
+    print(restaurants_lists)
+
+    data = {
+        'restaurants': restaurants_lists,
+        'districts': districts,
+        'current_district': current_district
+    }
+
+    return render(request, 'food/restaurant_page_district.html',data)
+
+   
 def storePage(request, url):
     store = Store.objects.get(url=url)
     try:

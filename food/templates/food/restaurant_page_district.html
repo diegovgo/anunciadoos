@@ -5,15 +5,15 @@
 {% endblock %}
 {% block heading %}
 
-<h1>Escoge un restaurante:</h1>
 <div>Distritos: </div>
 
 {% for district in districts %}
-<a href="{% url 'restaurant_for_district' district.url %}"> {{ district.name }} </a>
+<a href="{% url 'restaurant_for_district' district.url %}"> {{ district.name }} - </a>
 {% endfor %} 
 
-{% endblock %} 
+<h1>Escoge un restaurante en {{ current_district.name }}:</h1>
 
+{% endblock %} 
 
 {% block body %} {% for restaurant in restaurants %}
 <a href="{% url 'restaurant_page' restaurant.url %}" style="text-decoration: none;">

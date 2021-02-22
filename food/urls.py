@@ -10,6 +10,7 @@ urlpatterns = [
     path("restaurantes", views.restaurant, name="restaurants"),
     path("abarrotes", views.store, name="store"),
     path("restaurantes/<url>", views.restPage, name="restaurant_page"),
+    path("restaurante/<district_url>", views.restDistrict, name="restaurant_for_district"),
     path("abarrote/<url>", views.storePage, name="store_page"),
     path("salud", views.salud, name="salud"),
     path("salud/instituciones/<url>", views.saludPage, name="salud_page"),
