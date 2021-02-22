@@ -5,21 +5,29 @@
 {% endblock %}
 {% block heading %}
 
-<h1>Escoge un restaurante:</h1>
+<h1>Escoge tu distrito:</h1>
 <div>Distritos: </div>
 
 {% for district in districts %}
-<a href="{% url 'restaurant_for_district' district.url %}"> {{ district.name }} </a>
-{% endfor %} 
+<div style="margin-bottom: 10px;">
+ <a href="{% url 'restaurant_for_district' district.url %}" style="background-color: lightgray; padding:5px; border-radius: 25px; text-decoration: none; margin:5px; font-size: 25px; color:white"> 
 
+    {{ district.name }}
+</a>
+</div>
+{% endfor %} 
 {% endblock %} 
 
 
-{% block body %} {% for restaurant in restaurants %}
+{% block body %} 
+
+<h2>Todos los restaurantes:</h2>
+
+{% for restaurant in restaurants %}
 <a href="{% url 'restaurant_page' restaurant.url %}" style="text-decoration: none;">
     <div style="width: auto; text-align:left">
 
-        <div value="{{ restaurant.id }}" class="card" style="background-color:white; border-color: white; opacity: 90%; height: 170px; border-radius: 30px; box-shadow: 5px 5px 3px 3px #888888;">
+        <div value="{{ restaurant.id }}" class="card" style="background-color:white; border-color: white; opacity: 90%; height: 170px; border-radius: 25px; box-shadow: 5px 5px 3px 3px #888888;">
             <div class="card-body">
                 <div class="row">
                     <div class="col-4">
