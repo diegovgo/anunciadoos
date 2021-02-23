@@ -3,14 +3,25 @@
 <link rel="shortcut icon" href="{% static 'static/logo.png' %}" type="image/png">
 
 <style>
-    #district-list {
+
+@keyframes example {
+  from {margin-left: 15px}
+  to {margin-left: 25px}
+}
+
+#district-list {
     background-color: lightgray;
     transition: background-color .5s;
+    animation-name: example;
+    animation-duration: 0.85s;
+    animation-iteration-count: 100;
+    animation-direction: alternate;
 }
 
 #district-list:hover {
     background-color: gray;
 }
+
 
 </style>
 
