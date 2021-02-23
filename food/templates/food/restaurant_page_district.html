@@ -2,6 +2,19 @@
 {% block head %}
 <link rel="shortcut icon" href="{% static 'static/logo.png' %}" type="image/png">
 
+<style>
+#district-list {
+    background-color: lightgray;
+    transition: background-color .5s;
+}
+
+#district-list:hover {
+    background-color: gray;
+}
+
+
+</style>
+
 {% endblock %}
 {% block heading %}
 
@@ -11,7 +24,7 @@
 
 <div style="margin-bottom: 20px;">
     {% for district in districts %}
-     <a href="{% url 'restaurant_for_district' district.url %}" style="background-color: lightgray; padding:2.5px; border-radius: 25px; text-decoration: none; margin:5px;color:white"> 
+     <a id="district-list" href="{% url 'restaurant_for_district' district.url %}" style=" padding:2.5px; border-radius: 25px; text-decoration: none; margin:5px;color:black"> 
     
         {{ district.name }}
     </a>
