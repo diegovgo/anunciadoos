@@ -16,11 +16,14 @@
     animation-duration: 0.85s;
     animation-iteration-count: 100;
     animation-direction: alternate;
+    color: black;
 }
 
 #district-list:hover {
-    background-color: gray;
+    background-color: black;
+    color: white;
 }
+
 
 
 </style>
@@ -30,11 +33,11 @@
 {% block heading %}
 
 <h1>Escoge tu distrito:</h1>
-<div>Distritos: </div>
+
 
 {% for district in districts %}
 <div style="margin-bottom: 10px;">
- <a id="district-list"  href="{% url 'restaurant_for_district' district.url %}" style="padding:5px; border-radius: 25px; text-decoration: none; margin:5px; font-size: 25px; color:black;"> 
+ <a id="district-list"  href="{% url 'restaurant_for_district' district.url %}" style="padding:5px; border-radius: 25px; text-decoration: none; margin:5px; font-size: 25px"> 
 
     {{ district.name }}
 </a>

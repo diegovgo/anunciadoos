@@ -9,12 +9,21 @@
 #district-list {
     background-color: lightgray;
     transition: background-color .5s;
+    color:black
 }
 
 #district-list:hover {
     background-color: gray;
+    color:white;
 }
 
+div.scrollmenu {
+  overflow: auto;
+  white-space: nowrap;
+  position:sticky;
+  top:0px;
+  z-index:111 ;
+}
 
 </style>
 
@@ -25,9 +34,9 @@
 
 
 
-<div style="margin-bottom: 20px;">
+<div class="scrollmenu" style="margin-bottom: 20px;">
     {% for district in districts %}
-     <a id="district-list" href="{% url 'restaurant_for_district' district.url %}" style=" padding:2.5px; border-radius: 25px; text-decoration: none; margin:5px;color:black"> 
+     <a id="district-list" href="{% url 'restaurant_for_district' district.url %}" style=" padding:2.5px; border-radius: 25px; text-decoration: none; margin:5px;"> 
     
         {{ district.name }}
     </a>

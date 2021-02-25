@@ -104,7 +104,11 @@ div.scrollmenu a:hover {
       border: grey;
       border-radius: 15px;
     }
-
+  
+    .doFadeOut {
+    -webkit-animation:fadeOutSlideDown forwards ease-out 150ms;
+    animation:fadeOutSlideDown forwards ease-out 150ms;
+}
     
 </style>
 
@@ -296,7 +300,7 @@ $("[name='the-choosen']").click( function () {
   $(this).parent().hide();
   console.log("hidden successfully");
   c = $(this).parents('.input-box').children('.select-number-buttons');
-  c.show();
+  c.show('slow');
   newval = c.children('.the-number');
   newval.val("1");
 
@@ -308,7 +312,7 @@ $("[name='numbers-buttons-minus']").click( function () {
     newone = c.val("0");
     console.log(newone);
     console.log("no more less");
-    c.parent().hide();
+    c.parent().hide('slow');
     let a =  c.parents(".input-box").children(".choose-button");
     a.show();
     console.log(a);
