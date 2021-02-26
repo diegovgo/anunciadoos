@@ -51,6 +51,8 @@
 <h2>Todos los restaurantes:</h2>
 
 {% for restaurant in restaurants %}
+{% if restaurant.published == 1 %}
+
 <a href="{% url 'restaurant_page' restaurant.url %}" style="text-decoration: none;">
     <div style="width: auto; text-align:left">
 
@@ -88,6 +90,8 @@
     </div>
     <hr>
 </a>
+
+{% endif %}
 {% endfor %}
 
 

@@ -48,6 +48,8 @@ div.scrollmenu {
 {% endblock %} 
 
 {% block body %} {% for restaurant in restaurants %}
+
+{% if restaurant.published == 1 %}
 <a href="{% url 'restaurant_page' restaurant.url %}" style="text-decoration: none;">
     <div style="width: auto; text-align:left">
 
@@ -85,6 +87,8 @@ div.scrollmenu {
     </div>
     <hr>
 </a>
+
+{% endif %}
 {% endfor %}
 
 

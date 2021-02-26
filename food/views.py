@@ -41,8 +41,9 @@ def restaurant(request):
     print(list_of_restaurants)
 
     class Restaurantin:
-        def __init__(self, name, url, id, categorys, logo, description, deliveryprice):
+        def __init__(self, name, published, url, id, categorys, logo, description, deliveryprice):
             self.name = name
+            self.published = published
             self.url = url
             self.id = id
             self.categorys = categorys
@@ -53,7 +54,7 @@ def restaurant(request):
     restaurants_lists = list()
 
     for restaurant in restaurants:
-        restaurants_lists.append(Restaurantin(restaurant.name, restaurant.url, restaurant.id, restaurant.typeof.all() , restaurant.logo.url, "blablablab", "3.99"))
+        restaurants_lists.append(Restaurantin(restaurant.name, restaurant.published, restaurant.url, restaurant.id, restaurant.typeof.all() , restaurant.logo.url, "blablablab", "3.99"))
 
     bravewings = restaurants_lists[2]
     diegos = bravewings.categorys
@@ -120,8 +121,9 @@ def restDistrict(request, district_url):
     restaurants = current_district.restaurant.all()
     print(restaurants)
     class Restauranton:
-        def __init__(self, name, url, id, categorys, logo, description, deliveryprice):
+        def __init__(self, name, published, url, id, categorys, logo, description, deliveryprice):
             self.name = name
+            self.published = published
             self.url = url
             self.id = id
             self.categorys = categorys
@@ -132,7 +134,7 @@ def restDistrict(request, district_url):
     restaurants_lists = list()
 
     for restaurant in restaurants:
-        restaurants_lists.append(Restauranton(restaurant.name, restaurant.url, restaurant.id, restaurant.typeof.all() , restaurant.logo.url, "blablablab", "3.99"))
+        restaurants_lists.append(Restauranton(restaurant.name, restaurant.published, restaurant.url, restaurant.id, restaurant.typeof.all() , restaurant.logo.url, "blablablab", "3.99"))
 
 
     print(restaurants_lists)
