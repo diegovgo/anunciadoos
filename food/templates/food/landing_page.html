@@ -1,0 +1,84 @@
+{% extends "food/base.html" %} {% load static %}
+{% block head %}
+<link rel="shortcut icon" href="{% static 'static/logo.png' %}" type="image/png">
+
+<style>
+#benefits {
+    padding: 15px
+}
+
+.unique {
+    padding: 10px;
+    display: flex;
+}
+
+.image-column {
+    padding-top: 5%;
+
+}
+
+.text-column {
+    align-items: center;
+    padding-top:5%;
+}
+
+</style>
+
+{% endblock %}
+
+
+{% block body %}
+</div>
+{% with 'static/imgs/portada.jpg' as image_static %}
+<div class="container" style='background-image:url("{% static image_static %}"); height: 400px; '>
+{% endwith %}
+<h1 style="color:white; font-size: 55px;">¿Quieres que tu negocio llegue a más personas?</h1>
+</div>
+
+<div id="benefits">
+    <div class="row unique">
+        <div class="col text-column">
+            <h1>Menú QR</h1>
+            <p>
+                Deja que tus clientes escaneen tu QR y tengan acceso directo a tu menú dinámico
+            </p>
+        </div>
+        <div class="col image-column">
+            <img src="{% static 'static/imgs/menu-qr.jpg' %}" alt="" width="100%" style="border-radius: 15px;">
+        </div>
+    </div>
+    <hr>
+    <div class="row unique">
+        <div class="col image-column">
+            <img src="{% static 'static/imgs/link-share.jpeg' %}" alt="" width="100%" style="border-radius: 15px">
+        </div>
+        <div class="col text-column">
+            <h1 style="font-size: 25px;">Promociónate en redes</h1>
+            <p>
+                Aprovecha la opción de mostrar tu menú y envía a todos tus clientes tu menú digital.
+            </p>
+        </div>
+    </div>
+    <hr>
+    <div class="row unique">
+        <div class="col text-column">
+            <h1 style="font-size: 25px;">Gana nuevos clientes</h1>
+            <p>
+                Atrae nuevos clientes! y <strong>multiplica</strong> tus ventas.
+            </p>
+        </div>
+        <div class="col image-column">
+            <img src="{% static 'static/imgs/tener-mas-clientes.jpg' %}" alt="" width="100%" style="border-radius: 15px">
+        </div>
+    </div>
+    <hr>
+</div>
+
+<h2>Preguntas frecuentes</h2>
+<h2>Nuestros aliados</h2>
+
+
+<script>
+    $("[name='back-button']").hide();
+</script>
+{% endblock %}

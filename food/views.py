@@ -198,3 +198,8 @@ def saludPage(request, url):
     }
 
     return render(request, 'food/salud_page.html', data)
+
+
+def landing(request):
+    return render(request, 'food/landing_page.html')
+
