@@ -3,8 +3,23 @@
 <link rel="shortcut icon" href="{% static 'static/logo.png' %}" type="image/png">
 
 <style>
+.price-box{
+    background-color: red;
+    color:white;
+    padding:5px;
+    border-radius: 7px;
+}
+
+.recommend {
+    border-style: solid;
+    border-width: 4px;
+    border-color:yellow;
+
+}
+
 .parent-box {
     display: inline-block;
+    text-align: center;
 }
 
 .box {
@@ -153,25 +168,25 @@ body{
 
 <div class="container parent-box">
     <div class="row">
-    <div class="box col-md-4">
+    <div class="box col-md-3">
         <img src="" alt="">
-        <h3>Plan 1</h3>
-        <p>Quiere digitalizarme y un QR</p>
+        <h3>Plan 1  <span class="price-box">$ 3.90</span> <h6>por mes</h6></h3>
+        <p> <strong> Quiere digitalizarme y un QR </strong> </p>
         <p>- Menu 100% digital y editable</p>
         <button class="btn btn-primary">¡Comprar ahora!</button>
     </div>
-    <div class="box col-md-4">
+    <div class="box col-md-3">
         <img src="" alt="">
-        <h3>Plan 2</h3>
-        <p>Quiero recibir pedidos</p>
+        <h3>Plan 2 <span class="price-box recommend">$ 4.90</span><h6>por mes</h6></h3>
+        <p> <strong> Quiero recibir pedidos </strong> </p>
         <p>- Clientes pueden generar su pedido desde la web y enviarlo posteriormente a su wsp</p>
         <p>- Menu interactivo para toma de pedidos.</p>
         <button class="btn btn-primary">¡Comprar ahora!</button>
     </div>
-    <div class="box col-md-4">
+    <div class="box col-md-3">
         <img src="" alt="">
-        <h3>Plan 3</h3>
-        <p>Quiero llegar a más personas</p>
+        <h3>Plan 3 <span class="price-box">$ 19.90</span><h6>por mes</h6> </h3>
+        <p> <strong> Quiero llegar a más personas </strong> </p>
         <p>- Su restaurante podra ser encontrado desde la web</p>
         <p>- Publicidad continua a nuestro web</p>
         <button class="btn btn-primary">¡Comprar ahora!</button>
