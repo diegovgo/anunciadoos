@@ -3,6 +3,78 @@
 <link rel="shortcut icon" href="{% static 'static/logo.png' %}" type="image/png">
 
 <style>
+.parent-box {
+    display: inline-block;
+}
+
+.box {
+    border-radius:15px;
+    border:1px;
+    border-color: black;
+    background-color: white;
+    margin: 0 10px 15px 0;
+
+    padding:15px
+}
+
+
+body{
+    background: -webkit-linear-gradient(left,white, #FFD933);
+    color: black
+}
+.contact-form{
+    background: #fff;
+    margin-top: 10%;
+    margin-bottom: 5%;
+    width: 70%;
+}
+.contact-form .form-control{
+    border-radius:1rem;
+}
+.contact-image{
+    text-align: center;
+}
+.contact-image img{
+    border-radius: 6rem;
+    width: 11%;
+    margin-top: -3%;
+    transform: rotate(29deg);
+}
+.contact-form{
+    border-radius: 15px;
+}
+.contact-form form{
+    padding: 14%;
+}
+.contact-form form .row{
+    margin-bottom: -7%;
+}
+.contact-form h3{
+    margin-bottom: 8%;
+    margin-top: -10%;
+    text-align: center;
+    color: #FFD933;
+}
+.contact-form .btnContact {
+    width: 50%;
+    border: none;
+    border-radius: 1rem;
+    padding: 1.5%;
+    background: #dc3545;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+}
+.btnContactSubmit
+{
+    width: 50%;
+    border-radius: 1rem;
+    padding: 1.5%;
+    color: #fff;
+    background-color: black;
+    border: none;
+    cursor: pointer;
+}
 #benefits {
     padding: 15px
 }
@@ -30,7 +102,10 @@
 {% block body %}
 </div>
 {% with 'static/imgs/portada.jpg' as image_static %}
-<div class="container" style='background-image:url("{% static image_static %}"); height: 400px; '>
+<div class="container" style='background-image: linear-gradient(
+    rgba(0, 0, 0, 0.5),
+    rgba(0, 0, 0, 0.5)
+  ),url("{% static image_static %}"); height: 400px; '>
 {% endwith %}
 <h1 style="color:white; font-size: 55px;">¿Quieres que tu negocio llegue a más personas?</h1>
 </div>
@@ -74,9 +149,63 @@
     <hr>
 </div>
 
-<h2>Preguntas frecuentes</h2>
-<h2>Nuestros aliados</h2>
+<h2>Nuestros Planes</h2>
 
+<div class="container parent-box">
+    <div class="row">
+    <div class="box col-md-4">
+        <img src="" alt="">
+        <h3>Plan 1</h3>
+        <p>Quiere digitalizarme y un QR</p>
+        <p>- Menu 100% digital y editable</p>
+        <button class="btn btn-primary">¡Comprar ahora!</button>
+    </div>
+    <div class="box col-md-4">
+        <img src="" alt="">
+        <h3>Plan 2</h3>
+        <p>Quiero recibir pedidos</p>
+        <p>- Clientes pueden generar su pedido desde la web y enviarlo posteriormente a su wsp</p>
+        <p>- Menu interactivo para toma de pedidos.</p>
+        <button class="btn btn-primary">¡Comprar ahora!</button>
+    </div>
+    <div class="box col-md-4">
+        <img src="" alt="">
+        <h3>Plan 3</h3>
+        <p>Quiero llegar a más personas</p>
+        <p>- Su restaurante podra ser encontrado desde la web</p>
+        <p>- Publicidad continua a nuestro web</p>
+        <button class="btn btn-primary">¡Comprar ahora!</button>
+    </div>
+    </div>
+</div>
+
+<h2>Nuestros aliados</h2>
+<div class="container contact-form">
+    <div class="contact-image">
+        <img src="https://image.ibb.co/kUagtU/rocket_contact.png" alt="rocket_contact"/>
+    </div>
+    <form method="post">
+        <h3>Déjanos Un Mensaje</h3>
+       <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <input type="text" name="txtName" class="form-control" placeholder="Tu nombre" value="" />
+                </div>
+                <div class="form-group">
+                    <input type="text" name="txtEmail" class="form-control" placeholder="Tu email" value="" />
+                </div>
+                <div class="form-group">
+                    <input type="submit" name="btnSubmit" class="btnContact" value="Enviar" />
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <textarea name="txtMsg" class="form-control" placeholder="¿Cuál es tu mensaje?" style="width: 100%; height: 150px;"></textarea>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
 
 <script>
     $("[name='back-button']").hide();
